@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+    <html>
+        <head>
+            <meta charset="utf-8">
+            <title>CRAWDESK</title>
+            <meta name="description" content="Lecture examples">
+            <meta name="author" content="Conor O&amp;Reilly">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+            <!-- do not touch this one -->
+            <link href="lib/bootstrap_v230/css/bootstrap.min.css" rel="stylesheet"/>
+            <link href="lib/bootstrap_v230/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+            
+            <!-- Your styles go in here-->
+            <link href="css/styles.css" rel="stylesheet"/>
+
+            <!-- javascripts libraries use by all pages-->
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+            <!-- the link below to the CDN links to the latest version of jquery each time BUT
+            this is a bad idea 
+                1) the caching only works if you specify a version number
+                2) deploy with only what you have tested with
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+            -->
+            <script src="lib/bootstrap_v230/js/bootstrap.min.js"></script>
+
+            <!-- The HTML5 shim, for IE6-8 support of HTML5 elements -->
+            <!--[if lt IE 9]>
+                <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+            <![endif]-->
+
+        </head>
+
+        <body>
+
+            <!-- stationary nav bar -->
+            <div class="navbar navbar-fixed-top">
+              <div class="navbar-inner">
+                <div class="container">
+                  <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </a>
+                  <a class="brand" href="index.php">CRAWDESK</a>
+                  <div class="nav-collapse">
+                    <ul class="nav">                      
+                      <li><a href="index.php">Home</a></li>
+                      <li><a href="twitter1.html">Twitter1</a></li>
+                      <li class="active"><a href="twitter2.html">Twitter2</a></li>
+                      <li><a href="myCV.html">myCV</a></li>
+                      <li><a href="myCV2.html">myCV</a></li>
+                      <li><a href="project1.html">Project 1</a></li>
+                      <li><a href="project2.html">Project 2</a></li>
+                      <li><a href="project3.php">Project 3</a></li>
+                      <li><a href="about.html">About</a></li>
+                      <li><a href="samples.php">Notes</a></li> 
+                      <li><a href="envsetup.php">What PHP</a></li>                    
+                    </ul>
+                  </div><!--/.nav-collapse -->
+                </div>
+              </div>
+            </div>
+            
+            <!-- main page content -->
+            <div class="wrapper">
+            <!-- the wrapper is above the containers to push down the footer -->
+
+            <br/>
+
+            <div class="container twitter">
+
+            <h1> Twitter Embedded Timelines in a box</h1>
+
+            <!-- additional properties have been added to these buttons based on twitter
+                 documentation at https://dev.twitter.com/docs/tweet-button
+             -->
+
+              <div class="row">
+
+                   <div class="span4">
+                   <h2>Twitter Buttons</h2>
+                   <p><a href="https://twitter.com/crowforgedev" 
+                        class="twitter-follow-button" 
+                        data-show-count="false"
+                        data-size="large">Follow @crowforgedev</a></p>
+
+                   <p><a href="https://twitter.com/share" 
+                        class="twitter-share-button" 
+                        data-via="crowforgedev" 
+                        data-size="large">Tweet</a></p>
+
+                   <p><a href="https://twitter.com/intent/tweet?button_hashtag=edutech" 
+                        class="twitter-hashtag-button" 
+                        data-related="crowforgedev"
+                        data-size="large">Tweet #edutech</a></p>
+
+                   <p><a href="https://twitter.com/intent/tweet?screen_name=crowforgedev" 
+                        class="twitter-mention-button" 
+                        data-related="crowforgedev"
+                        data-size="large">Tweet to @crowforgedev</a></p>
+
+                   </div><!-- .span4 -->
+
+                    <div class="span4">
+                    
+                        <h2>Development links</h2>
+                        <ul>
+                            <li>  
+                                <a href="https://dev.twitter.com/docs/tweet-button">Style Twitter buttons</a>
+                            </li>
+                            <li>
+                                <a href="http://net.tutsplus.com/tutorials/php/how-to-authenticate-users-with-twitter-oauth/">Authenticate Users with Twitter OAuth</a>
+                            </li>
+                            <li>
+                                <a href="http://140dev.com/twitter-api-programming-blog/category/tutorials/">140DEV twitter tutorials</a>
+                            </li>
+                        </ul>
+                        
+                    </div><!-- .span4 -->
+              </div><!-- .row -->
+
+              <div class="row">
+
+                   <div class="span4">
+                   <h2>#UX #UI hashtags</h2>
+                   <p><a href="https://twitter.com/search?q=%23UX+%23UI"
+                         class="twitter-timeline"  data-widget-id="310377510787489792">Tweets about "#UX #UI"</a></p>
+                   </div><!-- .span4 -->
+
+                   <div class="span4">
+                   <h2>Paul Irish</h2>
+                   <p><a href="https://twitter.com/paul_irish"  
+                         class="twitter-timeline"  
+                         data-widget-id="310379773274767363">Tweets by @paul_irish</a></p>
+                   </div><!-- .span4 -->
+
+                   <div class="span4">
+                   <h2>Web design tweets</h2>
+                   <p><a <a class="twitter-timeline"  
+                            href="https://twitter.com/search?q=%23webdesign+%23inspiration"  
+                            data-widget-id="310384968515854336">Web Design Tweets</a></p>
+                    <p>possible hashtags: #inspiration #webdevelopment #webdesign #webdesigner #typography #cms</p>
+                   </div><!-- .span4 -->
+
+                  </div><!-- .row -->
+             </div><!-- .container --> 
+
+             <br/>           
+
+
+             <!-- Twitter JS -->
+             <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script> 
+
+
+            <!-- keep this at the bottom to push down the footer-->
+            <div class="push"><!--//--></div>
+            </div><!-- .wrapper -->
+
+            <!-- footer -->
+            <footer>
+            <div class="container">
+            <div class="row">
+                    <p>&copy; Conor O&apos;Reilly 2013</p>
+            </div><!-- .row -->
+            </div><!-- .container -->
+            </footer>
+            
+        </body>
+    </html>

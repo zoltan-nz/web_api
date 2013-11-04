@@ -1,0 +1,426 @@
+@charset "UTF-8";
+
+/*
+--------------------------------------------------
+ Basic page layout, that ensures that the footer
+ is at the end of the page
+-------------------------------------------------- */
+	
+html, body 
+{
+  background: url("../img/paper.jpg") repeat scroll 0 0 #D8DCCE;
+  padding-top: 30px;
+  height: 100%;
+  font-size: 16px;
+  font-family: 'American Typewriter',Georgia,sans-serif;
+}
+
+footer 
+{
+  color: #FFF;
+  background: #C84941;
+  padding: 17px 0 18px 0;
+  border-top: 1px solid #C84941;
+}
+
+footer a 
+{
+  color: #999;
+}
+
+footer a:hover 
+{
+  color: #efefef;
+}
+
+.buttonbar
+{
+  padding-top: 10px;
+}
+
+
+.wrapper 
+{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -63px;
+  /*
+    background-color: #4094C1; - google blue
+    background-color: #EEA901; - orange brown
+    
+    #EEA901;
+  background-color: #FFD57C;
+  */
+}
+
+.push 
+{
+  height: 63px;
+  /* background-color: #4094C1; */
+}
+
+/* not required for sticky footer; just pushes hero down a bit */
+.wrapper > .container 
+{
+  padding-top: 20px;
+}
+
+.wrapperNoColour 
+{
+  min-height: 100%;
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto -63px;
+  background-color: #FFFFFF;
+}
+
+/* 
+--------------------------------------------------
+ Header Styles
+-------------------------------------------------- */
+
+  .container h1, h2, h3, h4, h5, h6, p {
+    font-family: 'American Typewriter',Georgia,sans-serif;
+    color:#111;
+    padding-top:5px;
+    padding-bottom:5px;
+    padding-left: 10px;
+    font-weight: 400;
+    /*text-shadow: 0 1px 1px #F8FCEE;*/
+    letter-spacing: -0.011em;
+    line-height: 1.333;
+  }
+  
+  .container h1{
+    font-size: 40px;
+    font-weight: bold;
+  }
+  
+  .container h2{
+    font-size:35px;
+    font-weight: bold;
+  }
+  
+  .container h3{
+    font-size:20px;
+  }
+  
+  .container h4{
+    font-size:16px;
+  }
+  
+  .container h5{
+    font-size:14px;
+  }
+  
+  .container h6{
+    font-size:12px;
+  }
+
+  .container p{
+    font-size:20px;
+  }
+
+  .whitefont
+  {
+      color:#EEE;
+  }
+
+  .padFirstP
+  {
+      padding-top: 20px;
+  }
+
+/* 
+--------------------------------------------------
+ -
+-------------------------------------------------- */
+
+a img
+{
+  border:0;
+} 
+
+img 
+{ 
+  max-width: 100%;
+}
+
+.responsive-image { max-width:100%; height:auto; }
+
+/* 
+--------------------------------------------------
+ -
+-------------------------------------------------- */
+
+.form-actions
+{
+  background-color: #FFF;
+  border-top: 1px solid #FFF;
+}
+
+/* 
+--------------------------------------------------
+ -
+-------------------------------------------------- */
+
+.colourband1 
+{
+    padding-left: 20px;
+    padding-right:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    /*
+    google colours
+    background-color: #ABC1C7;
+    background-color: #F8F8F7;
+    background-color: #B7B1AE;
+    background-color: #D8BC33;
+    background-color: #4094C1;
+    background-color: #DABB3A;
+    background-color: #1EA061; - Green
+    background-color: #C84941; - Red
+    background-color: #67ADB4; - blue
+    background-color: #ABC1C7; - grey
+    background-color: #FFD57C; - butter
+    background-color: #F9A11B; - gold
+    background-color: #EAB91B; - mustard
+     background-color: #6B4A14 - brown;
+    */
+    background-color: #6B4A14;
+
+
+    /*ISSUE? what issues will this cause for responsize design */
+    min-height: 600px;
+}
+
+.colourband2 
+{
+    padding-left: 20px;
+    padding-right:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #4094C1;
+
+    /*ISSUE? what issues will this cause for responsize design */
+    min-height: 100px;
+}
+
+.docpanel0
+{
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  min-height: 100%;
+}
+
+.docpanelMinHeight
+{
+  background: #D4E7ED;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  min-height: 248px;
+  display: inline-block;
+}
+
+.docpanel1
+{
+  background: #D4E7ED;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.docpanel2
+{
+  background: #7195A3;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.docpanel3
+{
+  background: #74A6BD;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.docpanel4
+{
+  background: #EB8540;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.docpanel5
+{
+  background: #B06A3B;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.docpanel6
+{
+  background: #AB988B;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.docpanel7
+{
+  background: #4A7B6F;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
+.form-actions
+{
+  background-color: #FFF;
+  border-top: 1px solid #FFF;
+}
+
+/* 
+--------------------------------------------------
+ The blue twitter colour band
+-------------------------------------------------- */
+
+.twitter 
+{
+    padding-left: 20px;
+    padding-right:20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color:#33ccff;
+}
+
+/* 
+--------------------------------------------------
+ Google Map
+-------------------------------------------------- */
+
+ #map_canvas 
+ { 
+
+  height: 400px;
+  width: 400px;
+
+ }
+
+/* 
+--------------------------------------------------
+ horizontal rule
+-------------------------------------------------- */
+
+.colourRule 
+{
+    background-color:#4094C1;
+    color:#4094C1;
+    height:1px;
+    border:none;
+    /*
+    Border Styles that can be used
+     border-style: dotted; 
+     border-style: dashed; 
+     border-style: solid; 
+     border-style: double; 
+     border-style: groove; 
+     border-style: ridge; 
+     border-style: inset; 
+     border-style: outset; 
+    Can also use an image
+     background: #fff url(../img/imagetoUse.gif) no-repeat scroll center;
+    */
+}
+
+.pictureRule 
+{
+  /*
+  Ref: http://www.smashingmagazine.com/2008/09/09/the-hr-contest-results-download-your-fresh-hr-line-now/
+  Ref: http://blog.neatlysliced.com/2008/03/hr-image-replacement/
+
+  background:url(../img/hr-Nathan-Kelly0001.png) no-repeat scroll center;
+  */
+
+  border:none;
+  height:30px;
+  background:url(../img/scroll.gif) no-repeat scroll center;
+
+  /* width: 150px, height: auto to retain aspect ratio */
+  background-size: 400px Auto;
+}
+
+/* 
+--------------------------------------------------
+ AJAX loading gif
+-------------------------------------------------- */
+
+#loading{
+  visibility:hidden;
+}
+
+/* 
+--------------------------------------------------
+ Jumbotrons from Bootstraps Example site
+-------------------------------------------------- */
+.jumbotron {
+  position: relative;
+  padding: 40px 0;
+  color: #fff;
+  text-align: center;
+  text-shadow: 0 1px 3px rgba(0,0,0,.4), 0 0 30px rgba(0,0,0,.075);
+  background: #020031; /* Old browsers */
+  background: -moz-linear-gradient(45deg, #020031 0%, #6d3353 100%); /* FF3.6+ */
+  background: -webkit-gradient(linear, left bottom, right top, color-stop(0%,#020031), color-stop(100%,#6d3353)); /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(45deg, #020031 0%,#6d3353 100%); /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(45deg, #020031 0%,#6d3353 100%); /* Opera 11.10+ */
+  background: -ms-linear-gradient(45deg, #020031 0%,#6d3353 100%); /* IE10+ */
+  background: linear-gradient(45deg, #020031 0%,#6d3353 100%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#020031', endColorstr='#6d3353',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  -webkit-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+     -moz-box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+          box-shadow: inset 0 3px 7px rgba(0,0,0,.2), inset 0 -3px 7px rgba(0,0,0,.2);
+}
+.jumbotron h1 {
+  font-size: 80px;
+  font-weight: bold;
+  letter-spacing: -1px;
+  line-height: 1;
+}
+.jumbotron p {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.25;
+  margin-bottom: 30px;
+}
+
+/* Link styles (used on .masthead-links as well) */
+.jumbotron a {
+  color: #fff;
+  color: rgba(255,255,255,.5);
+  -webkit-transition: all .2s ease-in-out;
+     -moz-transition: all .2s ease-in-out;
+          transition: all .2s ease-in-out;
+}
+.jumbotron a:hover {
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255,255,255,.25);
+}
+
+/* Pattern overlay
+------------------------- */
+.jumbotron .container {
+  position: relative;
+  z-index: 2;
+}
+.jumbotron:after {
+  content: '';
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: url(../img/bs-docs-masthead-pattern.png) repeat center center;
+  opacity: .4;
+}
+@media
+only screen and (-webkit-min-device-pixel-ratio: 2),
+only screen and ( min--moz-device-pixel-ratio: 2),
+only screen and ( -o-min-device-pixel-ratio: 2/1) {
+
+  .jumbotron:after {
+    background-size: 150px 150px;
+  }
+
+}
+
