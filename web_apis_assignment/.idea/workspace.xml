@@ -2,26 +2,44 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="12525cca-fa6a-4b23-97d7-aa2990ccdc77" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/images/background.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/facebook-php-sdk" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/images/middleman.png" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/tmhOAuth" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/.gitignore" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/Gemfile.lock" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/Gemfile" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/stylesheets/all.css" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/javascripts/all.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/config.rb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/index.html.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/layouts/layout.erb" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../client/source/stylesheets/normalize.css" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/app/inc/app_tokens_twitter.inc.php" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/.name" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/.travis.yml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/tmhOAuth/LICENSE" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/tmhOAuth/README.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/js/app.js" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/src/base_facebook.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/tests/bootstrap.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/tmhOAuth/cacert.pem" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/changelog.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/tmhOAuth/composer.json" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/cssxfire.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/encodings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/examples/example.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/src/facebook.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/facebook_login.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/src/fb_ca_chain_bundle.crt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/layout/footer.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/google_login.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/layout/header.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/index.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/misc.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/modules.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/readme.md" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/scopes/scope_settings.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/simple.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/css/styles.css" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/tests/tests.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/tmhOAuth/tmhOAuth.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/tmhOAuth/tmhUtilities.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/twitter_login.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/vcs.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/lib/facebook-php-sdk/examples/with_js_sdk.php" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/../simple_api_app/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/../.gitignore" afterPath="$PROJECT_DIR$/../.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/inc/config.inc.php" afterPath="$PROJECT_DIR$/app/inc/config.inc.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/inc/functions.inc.php" afterPath="$PROJECT_DIR$/app/inc/functions.inc.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.php" afterPath="$PROJECT_DIR$/index.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/twitter_post.php" afterPath="$PROJECT_DIR$/twitter_post.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="web_apis_assignment.iws" />
@@ -45,100 +63,116 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="twitter_post.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitter_post.php">
+      <file leaf-file-name="index.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="99" column="45" selection-start="2727" selection-end="2727" vertical-scroll-proportion="-7.037037" vertical-offset="1430" max-vertical-offset="2358">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="twitter_postForm.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitter_postForm.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="14" selection-start="630" selection-end="630" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="2574">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="twitter_postFormAJAX.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitter_postFormAJAX.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="19" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="54.0" vertical-offset="1620" max-vertical-offset="2664">
+            <state line="73" column="0" selection-start="1914" selection-end="1914" vertical-scroll-proportion="-12.0" vertical-offset="918" max-vertical-offset="2790">
               <folding>
-                <element signature="e#2421#3206#0" expanded="true" />
+                <element signature="e#71#199#0" expanded="false" />
+                <marker date="1383595626341" expanded="true" signature="1939:3616" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2122:2598" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2139:2591" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2148:2296" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2333:2397" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2429:2492" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2523:2585" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2738:2833" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2860:3456" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2878:3449" placeholder="..." />
+                <marker date="1383595626341" expanded="true" signature="2903:3442" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="twitter_postFormJQueryAJAX.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/twitter_postFormJQueryAJAX.php">
+      <file leaf-file-name="logout.php" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/logout.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="9" selection-start="558" selection-end="558" vertical-scroll-proportion="14.666667" vertical-offset="540" max-vertical-offset="2178">
+            <state line="3" column="0" selection-start="42" selection-end="72" vertical-scroll-proportion="0.06257242" vertical-offset="0" max-vertical-offset="863">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="twitter_JQueryAJAXCall.js" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/twitter_JQueryAJAXCall.js">
+      <file leaf-file-name="login_twitter.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/login_twitter.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="39" selection-start="823" selection-end="829" vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="846">
+            <state line="9" column="0" selection-start="235" selection-end="260" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="522">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/header.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="7" column="82" selection-start="125" selection-end="322" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="774">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_google.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/header_google.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="16" column="10" selection-start="674" selection-end="674" vertical-scroll-proportion="13.333333" vertical-offset="648" max-vertical-offset="1530">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="header_min.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/header_min.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="234">
               <folding>
-                <element signature="n#!!doc" expanded="true" />
+                <marker date="1366157828000" expanded="true" signature="25:143" placeholder="..." />
+                <marker date="1366157828000" expanded="true" signature="40:127" placeholder="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="basicPage.inc.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/basicPage.inc.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="2" column="1" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="144">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="11" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="app_tokens_twitter.inc.php" pinned="false" current="true" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/inc/app_tokens_twitter.inc.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="4" column="18" selection-start="85" selection-end="85" vertical-scroll-proportion="0.11881188" vertical-offset="0" max-vertical-offset="606">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/../client/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="414">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="login_facebook.php" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/login_facebook.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="79" column="1" selection-start="2317" selection-end="2317" vertical-scroll-proportion="-0.0" vertical-offset="1296" max-vertical-offset="1620">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="774">
               <folding>
-                <marker date="1366157828000" expanded="true" signature="2328:2433" placeholder="..." />
-                <marker date="1366157828000" expanded="true" signature="2339:2401" placeholder="..." />
-                <marker date="1366157828000" expanded="true" signature="2412:2425" placeholder="..." />
+                <marker date="1366157828000" expanded="true" signature="648:1167" placeholder="..." />
+                <marker date="1366157828000" expanded="true" signature="686:1141" placeholder="..." />
+                <marker date="1366157828000" expanded="true" signature="729:923" placeholder="..." />
+                <marker date="1366157828000" expanded="true" signature="928:1049" placeholder="..." />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="menu.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/menu.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="918">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="project3.inc.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/project3.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="738">
+              <folding>
+                <marker date="1366157828000" expanded="true" signature="769:870" placeholder="..." />
+                <marker date="1366157828000" expanded="true" signature="807:844" placeholder="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="home.inc.php" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/view/public/home.inc.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="11" column="67" selection-start="248" selection-end="315" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="1224">
+              <folding />
             </state>
           </provider>
         </entry>
@@ -164,11 +198,11 @@
         <option value="$PROJECT_DIR$/app/inc/config.inc.php" />
         <option value="$PROJECT_DIR$/app/inc/functions.inc.php" />
         <option value="$PROJECT_DIR$/lib/tmhOAuth/tmhUtilities.php" />
-        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/twitter_post.php" />
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/../.gitignore" />
         <option value="$PROJECT_DIR$/app/inc/app_tokens_twitter.inc.php" />
+        <option value="$PROJECT_DIR$/index.php" />
       </list>
     </option>
   </component>
@@ -255,42 +289,6 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="tmhOAuth" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="lib" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="bootstrap_v230" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
               <option name="myItemId" value="js" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -306,70 +304,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="jigs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="img" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="db" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="css" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="web_apis_assignment" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="app" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="view" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="public" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -433,7 +367,7 @@
     <property name="options.lastSelected" value="Configurable.PHP.Servers" />
     <property name="recentsLimit" value="5" />
     <property name="restartRequiresConfirmation" value="true" />
-    <property name="last_opened_file_path" value="/var/www" />
+    <property name="last_opened_file_path" value="/var/www/simple" />
     <property name="options.splitter.details.proportions" value="0.2" />
     <property name="options.searchVisible" value="true" />
   </component>
@@ -535,17 +469,17 @@
     <frame x="0" y="0" width="1920" height="1055" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28056768" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28056768" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="CSS-X-Fire" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297362" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3297362" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Remote Host" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.17982924" sideWeight="0.7194323" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.178762" sideWeight="0.7194323" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.28056768" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.28056768" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -569,46 +503,10 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/view/public/header_google.php">
+    <entry file="file://$PROJECT_DIR$/login_facebook.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1530">
+        <state line="79" column="1" selection-start="2317" selection-end="2317" vertical-scroll-proportion="-20.962963" vertical-offset="730" max-vertical-offset="1620">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tmhOAuth/tmhUtilities.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="279" column="1" selection-start="10334" selection-end="10334" vertical-scroll-proportion="-46.851852" vertical-offset="3757" max-vertical-offset="5130">
-          <folding>
-            <marker date="1383586766141" expanded="false" signature="-1:-1" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/tmhOAuth/tmhOAuth.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="46" column="13" selection-start="1292" selection-end="1292" vertical-scroll-proportion="-0.6666667" vertical-offset="810" max-vertical-offset="15300">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="6" selection-end="49" vertical-scroll-proportion="-0.6666667" vertical-offset="0" max-vertical-offset="2790">
-          <folding>
-            <element signature="e#71#199#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/login_twitter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="6.5925927" vertical-offset="178" max-vertical-offset="522">
-          <folding>
-            <marker date="1366157828000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1366157828000" expanded="true" signature="-1:-1" placeholder="..." />
-            <marker date="1366157828000" expanded="true" signature="-1:-1" placeholder="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -623,80 +521,124 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/login_facebook.php">
+    <entry file="file://$PROJECT_DIR$/samples.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="1" selection-start="2317" selection-end="2317" vertical-scroll-proportion="0.0" vertical-offset="1296" max-vertical-offset="1620">
+        <state line="33" column="24" selection-start="761" selection-end="761" vertical-scroll-proportion="-2.5863268" vertical-offset="2754" max-vertical-offset="5526">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/inc/config.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="34" column="54" selection-start="837" selection-end="868" vertical-scroll-proportion="-20.0" vertical-offset="0" max-vertical-offset="648">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/inc/functions.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="30" column="21" selection-start="745" selection-end="745" vertical-scroll-proportion="-17.333334" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/com/jetbrains/php/lang/psi/stubs/data/session.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="164" column="9" selection-start="5686" selection-end="5686" vertical-scroll-proportion="0.34298956" vertical-offset="2656" max-vertical-offset="6930">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/public/basicPage.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="890">
           <folding>
-            <marker date="1366157828000" expanded="true" signature="2328:2433" placeholder="..." />
-            <marker date="1366157828000" expanded="true" signature="2339:2401" placeholder="..." />
-            <marker date="1366157828000" expanded="true" signature="2412:2425" placeholder="..." />
+            <marker date="1366157828000" expanded="true" signature="648:1167" placeholder="..." />
+            <marker date="1366157828000" expanded="true" signature="686:1141" placeholder="..." />
+            <marker date="1366157828000" expanded="true" signature="729:923" placeholder="..." />
+            <marker date="1366157828000" expanded="true" signature="928:1049" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/twitter_post.php">
+    <entry file="file://$PROJECT_DIR$/app/view/public/header.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="99" column="45" selection-start="2727" selection-end="2727" vertical-scroll-proportion="-7.037037" vertical-offset="1430" max-vertical-offset="2358">
+        <state line="7" column="82" selection-start="125" selection-end="322" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="774">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/twitter_postForm.php">
+    <entry file="file://$PROJECT_DIR$/app/view/public/header_google.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="14" selection-start="630" selection-end="630" vertical-scroll-proportion="-10.0" vertical-offset="0" max-vertical-offset="2574">
+        <state line="16" column="10" selection-start="674" selection-end="674" vertical-scroll-proportion="13.333333" vertical-offset="648" max-vertical-offset="1530">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/twitter_postFormAJAX.php">
+    <entry file="file://$PROJECT_DIR$/app/view/public/header_min.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="19" column="0" selection-start="521" selection-end="521" vertical-scroll-proportion="54.0" vertical-offset="1620" max-vertical-offset="2664">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="890">
           <folding>
-            <element signature="e#2421#3206#0" expanded="true" />
+            <marker date="1366157828000" expanded="true" signature="25:143" placeholder="..." />
+            <marker date="1366157828000" expanded="true" signature="40:127" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/twitter_postFormJQueryAJAX.php">
+    <entry file="file://$PROJECT_DIR$/app/view/public/home.inc.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="9" selection-start="558" selection-end="558" vertical-scroll-proportion="14.666667" vertical-offset="540" max-vertical-offset="2178">
+        <state line="11" column="67" selection-start="248" selection-end="315" vertical-scroll-proportion="-4.6666665" vertical-offset="0" max-vertical-offset="1224">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/twitter_JQueryAJAXCall.js">
+    <entry file="file://$PROJECT_DIR$/app/view/public/menu.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="39" selection-start="823" selection-end="829" vertical-scroll-proportion="0.0" vertical-offset="237" max-vertical-offset="846">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="918">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/view/public/project3.inc.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="890">
           <folding>
-            <element signature="n#!!doc" expanded="true" />
+            <marker date="1366157828000" expanded="true" signature="769:870" placeholder="..." />
+            <marker date="1366157828000" expanded="true" signature="807:844" placeholder="..." />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/../client/.gitignore">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="477">
+        <state line="73" column="0" selection-start="1914" selection-end="1914" vertical-scroll-proportion="-12.0" vertical-offset="918" max-vertical-offset="2790">
+          <folding>
+            <element signature="e#71#199#0" expanded="false" />
+            <marker date="1383595626341" expanded="true" signature="1939:3616" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2122:2598" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2139:2591" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2148:2296" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2333:2397" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2429:2492" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2523:2585" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2738:2833" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2860:3456" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2878:3449" placeholder="..." />
+            <marker date="1383595626341" expanded="true" signature="2903:3442" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/login_twitter.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="9" column="0" selection-start="235" selection-end="260" vertical-scroll-proportion="-2.0" vertical-offset="0" max-vertical-offset="522">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
+    <entry file="file://$PROJECT_DIR$/logout.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="2" column="1" selection-start="53" selection-end="53" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="144">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../.gitignore">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="11" selection-start="373" selection-end="373" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="486">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/inc/app_tokens_twitter.inc.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="4" column="18" selection-start="85" selection-end="85" vertical-scroll-proportion="0.11881188" vertical-offset="0" max-vertical-offset="606">
+        <state line="3" column="0" selection-start="42" selection-end="72" vertical-scroll-proportion="0.06257242" vertical-offset="0" max-vertical-offset="863">
           <folding />
         </state>
       </provider>

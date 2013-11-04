@@ -60,7 +60,7 @@ $activeIndex = "active";
 
 include (APPLICATION_PATH . "/inc/config.inc.php");
 include (APPLICATION_PATH . "/inc/db.inc.php");
-//include (APPLICATION_PATH . "/inc/functions.inc.php");
+include (APPLICATION_PATH . "/inc/functions.inc.php");
 
 
 /*
