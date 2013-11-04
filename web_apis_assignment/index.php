@@ -1,4 +1,6 @@
 <?php
+date_default_timezone_set('Europe/Dublin');
+error_reporting(-1);
 /* ****************************************
  * Author: Conor O'Reilly
  * Date: 

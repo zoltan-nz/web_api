@@ -80,8 +80,8 @@ include (TEMPLATE_PATH . "/public/header.php");
 		require (APPLICATION_PATH . "/inc/app_tokens_twitter.inc.php");
 
 		// Load the tmhOAuth library
-		require 'lib/tmhOAuth_v0.7.5/tmhOAuth.php';
-		require 'lib/tmhOAuth_v0.7.5/tmhUtilities.php';
+		require 'lib/tmhOAuth/tmhOAuth.php';
+		require 'lib/tmhOAuth/tmhUtilities.php';
 
 		// Create an OAuth connection to the Twitter API
 		$connection = new tmhOAuth(array(
@@ -92,6 +92,7 @@ include (TEMPLATE_PATH . "/public/header.php");
 		));
 
 		//can't tweet duplicates so use time to make tweet unique
+        date_default_timezone_set('Europe/Dublin');
 		$time = time();
 		$currenttime = date ('Y-m-d H:i', $time - ($time % 300));
 

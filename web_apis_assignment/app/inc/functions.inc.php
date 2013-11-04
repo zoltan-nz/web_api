@@ -21,13 +21,15 @@ function authenticate($username, $password)
 {   
     $boolAuthenticated = false;
     
-    $sqlQuery = "SELECT * from SYS_USERS WHERE ";
+    $sqlQuery = "SELECT * from 'sys_users' WHERE ";
     $sqlQuery .= "username = '" . $username . "'";
     $sqlQuery .= " AND ";
     $sqlQuery .= "password = '" .$password . "'";
     
     $result = mysql_query($sqlQuery);
-    
+
+    print_r($result);
+
     if (!$result)
     {
     	//die("Error: " . $sqlQuery . mysql_error());

@@ -21,7 +21,7 @@ defined('MY_INC_CODE') or die('Access to this file is restricted');
  */
 define("DB_HOST", "localhost");
 define("DB_USER", "root");
-define("DB_PASSWORD", "n0tabadpa22w0rd");
+define("DB_PASSWORD", "root");
 define("DB_DATABASE", "crawdesk");
 
 /*
