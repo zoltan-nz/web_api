@@ -7,7 +7,8 @@
 
 error_reporting(-1);
 
-define("MY_INC_CODE", 1);
+define('MY_INC_CODE', 1);
+
 define("LAYOUT_PATH", "layout");
 define("LIBRARY_PATH", "lib");
 
@@ -19,7 +20,10 @@ require 'secret_tokens.php';
 /* If the oauth_token is old redirect to the connect page. */
 if (isset($_REQUEST['oauth_token']) && $_SESSION['oauth_token'] !== $_REQUEST['oauth_token']) {
     $_SESSION['oauth_status'] = 'oldtoken';
-    header('Location: ./clearsessions.php');
+    session_start();
+    session_destroy();
+    session_start();
+    header('Location: twitter_login.php');
 }
 
 /* Create TwitteroAuth object with app key/secret and token key/secret from default phase */
