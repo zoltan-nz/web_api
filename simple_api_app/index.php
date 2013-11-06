@@ -93,6 +93,8 @@ include (LAYOUT_PATH.'/header.php');
                     <p>(This Like button's data-href attribute points to http://www.marketingforgambling.com url.)</p>
                     <h4>Send button:</h4>
                     <div class="fb-send" data-href="http://www.marketingforgambling.com" data-colorscheme="light"></div>
+                    <h4>Beautiful share button</h4>
+                    <div class="fb-share-button" data-href="http://www.marketingforgambling.com" data-type="button_count"></div>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Twitter</h2>
