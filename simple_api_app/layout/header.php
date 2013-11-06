@@ -14,7 +14,8 @@ defined('MY_INC_CODE') or die('Access to this file is restricted');
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/styles.css"/>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css"/>
-
+    <meta property="og:title" content="Laravel Info Site for API Assignment"
+    <meta property="og:url" content="http://www.marketingforgambling.com"
 </head>
 <body>
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">

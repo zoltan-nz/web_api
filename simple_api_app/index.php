@@ -10,7 +10,32 @@ define("LIBRARY_PATH", "lib");
 
 /* Libraries and tokens for twitter queries */
 require(LIBRARY_PATH . '/twitteroauth/twitteroauth/twitteroauth.php');
+require LIBRARY_PATH.'/facebook-php-sdk/src/facebook.php';
 require 'secret_tokens.php';
+
+//Checking user already logged in with facebook
+
+// Create our Application instance (replace this with your appId and secret).
+$facebook = new Facebook(array(
+    'appId'  => FACEBOOK_APP_ID,
+    'secret' => FACEBOOK_SECRET,
+));
+
+$user = $facebook->getUser();
+$_SESSION['fb_user'] = $user;
+
+if ($user) {
+    try {
+        // Proceed knowing you have a logged in user who's authenticated.
+        $user_profile = $facebook->api('/me');
+        $_SESSION['fb_user_profile'] = $user_profile;
+    } catch (FacebookApiException $e) {
+        error_log($e);
+        $user = null;
+    }
+}
+
+
 
 
 include (LAYOUT_PATH.'/header.php');
@@ -23,15 +48,35 @@ include (LAYOUT_PATH.'/header.php');
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="jumbotron">
                 <h1>Laravel Information Site</h1>
-                <p>This is a site about Laravel framework. All data downloaded from social networks.</p>
-                <p>If you want to interact, please login with one of the following options.</p>
+                <p>This is a site about Laravel framework. All data downloaded from social networks.
+                If you want to interact, please login with one of the following options.</p>
                 <div class="row">
-                    <div class="col-md-4 col-sm-4"><a class="btn btn-lg btn-primary btn-block" href="facebook_login.php">Login with Facebook</a></div>
+                    <div class="col-md-4 col-sm-4">
+                        <?php if ($user) { ?>
+                            <div class="well">
+                            <img class="pull-left img-rounded" style="margin-right: 10px;" src="https://graph.facebook.com/<?php echo $user; ?>/picture">
+                            <p class="clearfix">Hello <?php echo $user_profile['name'] ?>,</p>
+
+                            <h5 >You are logged in with your Facebook account.</h5>
+                            <a href='facebook_logout.php' class="btn btn-sm btn-primary btn-block">Logout</a>
+                            </div>
+                        <?php }
+                        else {
+                            $statusUrl = $facebook->getLoginStatusUrl();
+                            $loginUrl = $facebook->getLoginUrl();
+                            ?>
+                            <a class="btn btn-lg btn-primary btn-block" href="<?php echo $loginUrl ?>">Login with Facebook</a>
+                        <?php }?>
+
+
+                    </div>
                     <div class="col-md-4 col-sm-4">
                         <?php if (isset($_SESSION['twitter_results'])) { ?>
-                            <p>Hi <?php echo ($_SESSION['twitter_results']->name) ?></p>
-                            <p>You are logged in with your Twitter account.</p>
+                            <div class="well">
+                            <p>Hi <?php echo ($_SESSION['twitter_results']->name) ?>, </p>
+                            <h5>You are logged in with your Twitter account.</h5>
                             <a class="btn btn-sm btn-info btn-block" href="clearsessions.php">Logout</a>
+                            </div>
                         <?php } else { ?>
                             <a class="btn btn-lg btn-info btn-block" href="twitter_login.php">Login with Twitter</a>
                         <?php } ?>
@@ -41,9 +86,13 @@ include (LAYOUT_PATH.'/header.php');
             </div>
             <div class="row">
                 <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Facebook</h2>
-                    <p>In this section you can play with Facebook buttons</p>
-
+                    <h2>Facebook buttons</h2>
+                    <p>In this section you can play with Facebook buttons.</p>
+                    <h4>Please like us:</h4>
+                    <div class="fb-like" data-href="http://www.marketingforgambling.com" data-colorscheme="light" data-layout="button_count" data-action="like" data-show-faces="true"></div>
+                    <p>(This Like button's data-href attribute points to http://www.marketingforgambling.com url.)</p>
+                    <h4>Send button:</h4>
+                    <div class="fb-send" data-href="http://www.marketingforgambling.com" data-colorscheme="light"></div>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Twitter</h2>
@@ -59,9 +108,9 @@ include (LAYOUT_PATH.'/header.php');
                     <p>Everything from Google+</p>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                    <h2>Facebook Comments</h2>
+                    <p>Write your comments about Laravel with Facebook Comments.</p>
+                    <div class="fb-comments" data-href="http://www.marketingforgambling.com" data-numposts="5" data-width="300"></div>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-4">
                     <h2>Latest 5 tweets for 'laravel' keyword</h2>
@@ -83,9 +132,16 @@ include (LAYOUT_PATH.'/header.php');
                     <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Heading</h2>
-                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                    <h2>Facebook Search</h2>
+                    <p>Search results from API call for 'laravel' keyword.</p>
+                    <?php $search_results = $facebook->api('/search?q=laravel&type=post&limit=5');
+                        foreach ($search_results['data'] as $value) { ?>
+                            <div class="well">
+                                <?php echo ($value['message']); ?>
+                            </div>
+                        <?php } ?>
+
+
                 </div><!--/span-->
                 <div id="twitter_post_form" class="col-6 col-sm-6 col-lg-4">
                     <h2>Tweet something</h2>
