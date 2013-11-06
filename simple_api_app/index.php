@@ -64,8 +64,9 @@ include (LAYOUT_PATH.'/header.php');
                     <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
                 </div><!--/span-->
                 <div class="col-6 col-sm-6 col-lg-4">
-                    <h2>Latest 5 tweets with laravel</h2>
-                        <?php
+                    <h2>Latest 5 tweets for 'laravel' keyword</h2>
+                    <p>(Results downloaded via REST API call in json. Result list is generated with php on server side.)</p>
+                    <?php
                         $connection = new TwitterOAuth(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET);
                         $statuses = $connection->get('search/tweets', array('q' => 'laravel', 'lang' => 'en', 'count' => '5'))->statuses;
                         foreach ($statuses as $value) { ?>
@@ -113,6 +114,24 @@ include (LAYOUT_PATH.'/header.php');
                     <?php } else { ?>
                         <p>This box will be active if you already logged in with your twitter account.</p>
                     <?php } ?>
+
+
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">                 
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Heading</h2>
+                    <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+                    <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+                </div><!--/span-->
+                <div class="col-6 col-sm-6 col-lg-4">
+                    <h2>Laravel news</h2>
+                    <p>(This is a twitter widget, it is created on Twitter page and embeded here.)</p>
+                    <p>Original list: <a href="https://twitter.com/apidev505/lists/laravel-news">https://twitter.com/apidev505/lists/laravel-news</a></p>
+                    <a class="twitter-timeline" href="https://twitter.com/apidev505/laravel-news" data-widget-id="398105317029859328">Tweets from @apidev505/laravel-news</a>
 
 
                 </div><!--/span-->
