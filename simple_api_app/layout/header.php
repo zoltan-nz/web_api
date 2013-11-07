@@ -16,6 +16,16 @@ defined('MY_INC_CODE') or die('Access to this file is restricted');
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.1/css/bootstrap.min.css"/>
     <meta property="og:title" content="Laravel Info Site for API Assignment"
     <meta property="og:url" content="http://www.marketingforgambling.com"
+    <link href="https://plus.google.com/114811139546812816520" rel="publisher" />
+
+    <!--Google Plus recommendation script-->
+    <script type="text/javascript">
+        (function() {
+            var po = document.createElement("script"); po.type = "text/javascript"; po.async = true;
+            po.src = "https://apis.google.com/js/plusone.js?publisherid=114811139546812816520";
+            var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(po, s);
+        })();
+    </script>
 </head>
 <body>
 <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
