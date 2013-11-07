@@ -1,4 +1,6 @@
-WEB APIs
+Twitter - Facebook - Google Plus API implementation with PHP
 ===========================
 
-Different Web and Social Network API solutions and practices.
+Simple_Api_App is a test implementation of the most important social network apis.
+
+Working website is here: www.marketingforgambling.com
