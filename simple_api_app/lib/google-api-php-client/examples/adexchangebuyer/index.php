@@ -16,11 +16,11 @@
  */
 
 /**
-* Implements the examples execution flow.
-* Load this file with no parameters to get the list of available examples.
-*
-* @author David Torres <david.t@google.com>
-*/
+ * Implements the examples execution flow.
+ * Load this file with no parameters to get the list of available examples.
+ *
+ * @author David Torres <david.t@google.com>
+ */
 
 require_once "../../src/Google_Client.php";
 require_once "../../src/contrib/Google_AdexchangebuyerService.php";
@@ -43,56 +43,57 @@ $client->setScopes(array('https://www.googleapis.com/auth/adexchange.buyer'));
 $service = new Google_AdexchangebuyerService($client);
 
 if (isset($_GET['code'])) {
-  $client->authenticate();
-  $_SESSION['token'] = $client->getAccessToken();
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-  header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+    $client->authenticate();
+    $_SESSION['token'] = $client->getAccessToken();
+    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 }
 
 if (isset($_SESSION['token'])) {
-  $client->setAccessToken($_SESSION['token']);
+    $client->setAccessToken($_SESSION['token']);
 }
 
 if ($client->getAccessToken()) {
-  // Build the list of supported actions.
-  $actions = getSupportedActions();
+    // Build the list of supported actions.
+    $actions = getSupportedActions();
 
-  // If the action is set dispatch the action if supported
-  if (isset($_GET["action"])) {
-    $action = $_GET["action"];
-    if (!in_array($action, $actions)) {
-      die('Unsupported action:' . $action . "\n");
+    // If the action is set dispatch the action if supported
+    if (isset($_GET["action"])) {
+        $action = $_GET["action"];
+        if (!in_array($action, $actions)) {
+            die('Unsupported action:' . $action . "\n");
+        }
+        // Render the required action.
+        require_once 'examples/' . $action . '.php';
+        $class = ucfirst($action);
+        $example = new $class($service);
+        printHtmlHeader($example->getName());
+        try {
+            $example->execute();
+        } catch (Google_Exception $ex) {
+            printf('An error as occurred while calling the example:<br/>');
+            printf($ex->getMessage());
+        }
+        printSampleHtmlFooter();
+    } else {
+        // Show the list of links to supported actions.
+        printHtmlHeader('Ad Exchange Buyer API PHP usage examples.');
+        printExamplesIndex($actions);
+        printHtmlFooter();
     }
-    // Render the required action.
-    require_once 'examples/' . $action . '.php';
-    $class = ucfirst($action);
-    $example = new $class($service);
-    printHtmlHeader($example->getName());
-    try {
-      $example->execute();
-    } catch (Google_Exception $ex) {
-      printf('An error as occurred while calling the example:<br/>');
-      printf($ex->getMessage());
-    }
-    printSampleHtmlFooter();
-  } else {
-    // Show the list of links to supported actions.
-    printHtmlHeader('Ad Exchange Buyer API PHP usage examples.');
-    printExamplesIndex($actions);
-    printHtmlFooter();
-  }
 
-  // The access token may have been updated.
-  $_SESSION['token'] = $client->getAccessToken();
+    // The access token may have been updated.
+    $_SESSION['token'] = $client->getAccessToken();
 } else {
-  $authUrl = $client->createAuthUrl();
-  print "<a class='login' href='$authUrl'>Connect Me!</a>";
+    $authUrl = $client->createAuthUrl();
+    print "<a class='login' href='$authUrl'>Connect Me!</a>";
 }
 
 /**
  * Builds an array containing the supported actions.
  */
-function getSupportedActions() {
-  return array('GetAllAccounts', 'GetCreative', 'GetDirectDeals',
-               'SubmitCreative', 'UpdateAccount');
+function getSupportedActions()
+{
+    return array('GetAllAccounts', 'GetCreative', 'GetDirectDeals',
+        'SubmitCreative', 'UpdateAccount');
 }

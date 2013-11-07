@@ -36,58 +36,58 @@ $predictionService = new Google_PredictionService($client);
 $trainedmodels = $predictionService->trainedmodels;
 
 if (isset($_REQUEST['logout'])) {
-  unset($_SESSION['access_token']);
+    unset($_SESSION['access_token']);
 }
 
 if (isset($_GET['code'])) {
-  $client->authenticate();
-  $_SESSION['access_token'] = $client->getAccessToken();
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-  header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+    $client->authenticate();
+    $_SESSION['access_token'] = $client->getAccessToken();
+    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 }
 
 if (isset($_SESSION['access_token'])) {
-  $client->setAccessToken($_SESSION['access_token']);
+    $client->setAccessToken($_SESSION['access_token']);
 }
 
 if ($client->getAccessToken()) {
-  $status = "Logged In";
+    $status = "Logged In";
 } else {
-  $status = "Logged Out";
-  $authUrl = $client->createAuthUrl();
+    $status = "Logged Out";
+    $authUrl = $client->createAuthUrl();
 }
 ?>
 
 <!doctype html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <link rel='stylesheet' href='style.css' />
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='style.css'/>
 </head>
 <body>
 <header><h1>Google Prediction API Sample App (PHP)</h1></header>
 <div class="box">
 
-<!--<div>Status: <?php print $status?></div>-->
+    <!--<div>Status: <?php print $status?></div>-->
 
-<?php
-  if(isset($authUrl)) {
-    print "<a class='login' href='$authUrl'>Login</a>";
-    $result = "";
-    print("</div>");
-  } else {
-    print "<a class='login' href='?logout'>Logout</a>";
-    /* prediction logic follows...  */
-    $id = "languages";
-    $predictionText = "Je suis fatigue";
-    $predictionData = new Google_InputInput();
-    $predictionData->setCsvInstance(array($predictionText));
-    $input = new Google_Input();
-    $input->setInput($predictionData);
-    $result = $predictionService->trainedmodels->predict($id, $input);
-    print("</div><br><br><h2>Prediction Result:</h2>");
-    print_r($result);
-  }
-?>
+    <?php
+    if (isset($authUrl)) {
+        print "<a class='login' href='$authUrl'>Login</a>";
+        $result = "";
+        print("</div>");
+    } else {
+        print "<a class='login' href='?logout'>Logout</a>";
+        /* prediction logic follows...  */
+        $id = "languages";
+        $predictionText = "Je suis fatigue";
+        $predictionData = new Google_InputInput();
+        $predictionData->setCsvInstance(array($predictionText));
+        $input = new Google_Input();
+        $input->setInput($predictionData);
+        $result = $predictionService->trainedmodels->predict($id, $input);
+        print("</div><br><br><h2>Prediction Result:</h2>");
+        print_r($result);
+    }
+    ?>
 </body>
 </html>

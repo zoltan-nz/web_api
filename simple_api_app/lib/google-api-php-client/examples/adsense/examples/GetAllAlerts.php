@@ -25,24 +25,26 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAllAlerts extends BaseExample {
-  public function render() {
-    $listClass = 'list';
-    printListHeader($listClass);
-    // Retrieve alert list, and display it.
-    $result = $this->adSenseService->alerts->listAlerts();
-    if (isset($result['items'])) {
-      $alerts = $result['items'];
-      foreach ($alerts as $alert) {
-        $format = 'Alert id "%s" with severity "%s" and type "%s" was found.';
-        $content = sprintf(
-            $format, $alert['id'], $alert['severity'], $alert['type']);
-        printListElement($content);
-      }
-    } else {
-      printNoResultForList();
+class GetAllAlerts extends BaseExample
+{
+    public function render()
+    {
+        $listClass = 'list';
+        printListHeader($listClass);
+        // Retrieve alert list, and display it.
+        $result = $this->adSenseService->alerts->listAlerts();
+        if (isset($result['items'])) {
+            $alerts = $result['items'];
+            foreach ($alerts as $alert) {
+                $format = 'Alert id "%s" with severity "%s" and type "%s" was found.';
+                $content = sprintf(
+                    $format, $alert['id'], $alert['severity'], $alert['type']);
+                printListElement($content);
+            }
+        } else {
+            printNoResultForList();
+        }
+        printListFooter();
     }
-    printListFooter();
-  }
 }
 

@@ -26,52 +26,56 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author david.t@google.com (David Torres)
  */
-class GetCreative extends BaseExample {
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getInputParameters()
-   * @return array
-   */
-  protected function getInputParameters() {
-    return array(array('name' => 'account_id',
-                       'display' => 'Account id',
-                       'required' => true),
-                 array('name' => 'ad_group_id',
-                       'display' => 'Ad group id',
-                       'required' => true),
-                 array('name' => 'buyer_creative_id',
-                       'display' => 'Buyer creative id',
-                       'required' => true));
-  }
-
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::run()
-   */
-  public function run() {
-    $values = $this->formValues;
-
-    try {
-      $creative = $this->service->creatives->get($values['account_id'],
-          $values['buyer_creative_id'], $values['ad_group_id']);
-      print '<h2>Found creative</h2>';
-      $this->printResult($creative);
-    } catch (Google_Exception $ex) {
-      if ($ex->getCode() == 404 || $ex->getCode() == 403) {
-        print '<h1>Creative not found or can\'t access creative</h1>';
-      } else {
-        throw $ex;
-      }
+class GetCreative extends BaseExample
+{
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getInputParameters()
+     * @return array
+     */
+    protected function getInputParameters()
+    {
+        return array(array('name' => 'account_id',
+            'display' => 'Account id',
+            'required' => true),
+            array('name' => 'ad_group_id',
+                'display' => 'Ad group id',
+                'required' => true),
+            array('name' => 'buyer_creative_id',
+                'display' => 'Buyer creative id',
+                'required' => true));
     }
-  }
 
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getName()
-   * @return string
-   */
-  public function getName() {
-    return 'Get Creative';
-  }
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::run()
+     */
+    public function run()
+    {
+        $values = $this->formValues;
+
+        try {
+            $creative = $this->service->creatives->get($values['account_id'],
+                $values['buyer_creative_id'], $values['ad_group_id']);
+            print '<h2>Found creative</h2>';
+            $this->printResult($creative);
+        } catch (Google_Exception $ex) {
+            if ($ex->getCode() == 404 || $ex->getCode() == 403) {
+                print '<h1>Creative not found or can\'t access creative</h1>';
+            } else {
+                throw $ex;
+            }
+        }
+    }
+
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getName()
+     * @return string
+     */
+    public function getName()
+    {
+        return 'Get Creative';
+    }
 }
 

@@ -25,16 +25,18 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class StartAssociationSession extends BaseExample {
-  public function render() {
-    // Retrieve report.
-    $result = $this->adSenseHostService->associationsessions
-        ->start('AFC', 'www.example.com/blog');
+class StartAssociationSession extends BaseExample
+{
+    public function render()
+    {
+        // Retrieve report.
+        $result = $this->adSenseHostService->associationsessions
+            ->start('AFC', 'www.example.com/blog');
 
-    $format = 'Association with ID "%s" and redirect URL "%s" was started.';
-    $content = sprintf($format, $result['id'], $result['redirectUrl']);
+        $format = 'Association with ID "%s" and redirect URL "%s" was started.';
+        $content = sprintf($format, $result['id'], $result['redirectUrl']);
 
-    print $content;
-  }
+        print $content;
+    }
 }
 

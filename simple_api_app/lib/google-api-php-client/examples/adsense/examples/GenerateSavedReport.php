@@ -27,21 +27,23 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GenerateReport extends BaseExample {
-  public function render() {
-    $accountId = ACCOUNT_ID;
-    $savedReportId = SAVED_REPORT_ID;
-    // Retrieve report.
-    $report = $this->adSenseService->account_reports_saved
-        ->generate($accountId, $savedReportId);
+class GenerateReport extends BaseExample
+{
+    public function render()
+    {
+        $accountId = ACCOUNT_ID;
+        $savedReportId = SAVED_REPORT_ID;
+        // Retrieve report.
+        $report = $this->adSenseService->account_reports_saved
+            ->generate($accountId, $savedReportId);
 
-    if (isset($report['rows'])) {
-      printReportTableHeader($report['headers']);
-      printReportTableRows($report['rows']);
-      printReportTableFooter();
-    } else {
-      printNoResultForTable(count($report['headers']));
+        if (isset($report['rows'])) {
+            printReportTableHeader($report['headers']);
+            printReportTableRows($report['rows']);
+            printReportTableFooter();
+        } else {
+            printNoResultForTable(count($report['headers']));
+        }
     }
-  }
 }
 

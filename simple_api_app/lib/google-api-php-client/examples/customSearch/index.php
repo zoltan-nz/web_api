@@ -29,12 +29,12 @@ $search = new Google_CustomsearchService($client);
 
 // Example executing a search with your custom search id.
 $result = $search->cse->listCse('burrito', array(
-  'cx' => 'INSERT_SEARCH_ENGINE_ID', // The custom search engine ID to scope this search query.
+    'cx' => 'INSERT_SEARCH_ENGINE_ID', // The custom search engine ID to scope this search query.
 ));
 print "<pre>" . print_r($result, true) . "</pre>";
 
 // Example executing a search with the URL of a linked custom search engine.
 $result = $search->cse->listCse('burrito', array(
-  'cref' => 'http://www.google.com/cse/samples/vegetarian.xml',
+    'cref' => 'http://www.google.com/cse/samples/vegetarian.xml',
 ));
 print "<pre>" . print_r($result, true) . "</pre>";

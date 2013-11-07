@@ -27,114 +27,120 @@
  * instead of the default representation of associative arrays.
  * @author Nick Mihailovski <api.nickm@gmail.com>
  */
-class CoreReportingApiReference {
+class CoreReportingApiReference
+{
 
-  /** @var apiAnalyticsService $analytics */
-  private $analytics;
+    /** @var apiAnalyticsService $analytics */
+    private $analytics;
 
-  /**
-   * The Url of the main controller. Used to properly handle
-   * redirects and strip the URL of additional authorization
-   * parameters.
-   * @var string $controllerUrl
-   */
-  private $controllerUrl;
+    /**
+     * The Url of the main controller. Used to properly handle
+     * redirects and strip the URL of additional authorization
+     * parameters.
+     * @var string $controllerUrl
+     */
+    private $controllerUrl;
 
-  /** @var string $error */
-  private $error = null;
+    /** @var string $error */
+    private $error = null;
 
-  /**
-   * Constructor.
-   * @param $analytics
-   * @param string $controllerUrl The Url for the main controller.
-   * @internal param Google_AnalyticsService $analytics The analytics service
-   *     object to make requests to the API.
-   */
-  function __construct(&$analytics, $controllerUrl) {
-    $this->analytics = $analytics;
-    $this->controllerUrl;
-  }
-
-
-  /**
-   * Returns a HTML string representation of all the data in this demo.
-   * This method first queries the Core Reporting API with the provided
-   * profiled ID. Then it formats and returns all the results as a string.
-   * If any API errors occur, they are caught and set in $this->error.
-   * @param string $tableId The value of the ids parameter in the
-   *     Core Reporting API. This is the ga namespaced profile ID. It has the
-   *     format of ga:xxxx where xxxx is the profile ID. You can get this
-   *     value from the Management API. See the helloAnalytics.php example
-   *     for details.
-   * @return string The formatted results from the API.
-   */
-  function getHtmlOutput($tableId = null) {
-    $output = $this->getHTMLForm($tableId);
-
-    if (isset($tableId)) {
-      try {
-        $results = $this->queryCoreReportingApi($tableId);
-        $output .= $this->getFormattedResults($results);
-
-      } catch (Google_ServiceException $e) {
-        $this->error = $e->getMessage();
-      }
+    /**
+     * Constructor.
+     * @param $analytics
+     * @param string $controllerUrl The Url for the main controller.
+     * @internal param Google_AnalyticsService $analytics The analytics service
+     *     object to make requests to the API.
+     */
+    function __construct(&$analytics, $controllerUrl)
+    {
+        $this->analytics = $analytics;
+        $this->controllerUrl;
     }
-    return $output;
-  }
 
-  /**
-   * Queries the Core Reporting API for the top 25 organic search terms
-   * ordered by visits. Because the table id comes from the query parameter
-   * it needs to be URI decoded.
-   * @param string $tableId The value of the ids parameter in the
-   *     Core Reporting API. This is the ga namespaced profile ID. It has the
-   *     format of ga:xxxx where xxxx is the profile ID. You can get this
-   *     value from the Management API. See the helloAnalytics.php example
-   *     for details.
-   * @return GaData The results from the Core Reporting API.
-   */
-  private function queryCoreReportingApi($tableId) {
 
-    $optParams = array(
-        'dimensions' => 'ga:source,ga:keyword',
-        'sort' => '-ga:visits,ga:keyword',
-        'filters' => 'ga:medium==organic',
-        'max-results' => '25');
+    /**
+     * Returns a HTML string representation of all the data in this demo.
+     * This method first queries the Core Reporting API with the provided
+     * profiled ID. Then it formats and returns all the results as a string.
+     * If any API errors occur, they are caught and set in $this->error.
+     * @param string $tableId The value of the ids parameter in the
+     *     Core Reporting API. This is the ga namespaced profile ID. It has the
+     *     format of ga:xxxx where xxxx is the profile ID. You can get this
+     *     value from the Management API. See the helloAnalytics.php example
+     *     for details.
+     * @return string The formatted results from the API.
+     */
+    function getHtmlOutput($tableId = null)
+    {
+        $output = $this->getHTMLForm($tableId);
 
-    return $this->analytics->data_ga->get(
-        urldecode($tableId),
-        '2010-01-01',
-        '2010-01-15',
-        'ga:visits',
-        $optParams);
-  }
+        if (isset($tableId)) {
+            try {
+                $results = $this->queryCoreReportingApi($tableId);
+                $output .= $this->getFormattedResults($results);
 
-  /**
-   * Returns the results from the API as a HTML formatted string.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getFormattedResults(&$results) {
-    return implode('', array(
-        $this->getReportInfo($results),
-        $this->getPaginationInfo($results),
-        $this->getProfileInformation($results),
-        $this->getQueryParameters($results),
-        $this->getColumnHeaders($results),
-        $this->getTotalsForAllResults($results),
-        $this->getRows($results)
-    ));
-    
-  }
+            } catch (Google_ServiceException $e) {
+                $this->error = $e->getMessage();
+            }
+        }
+        return $output;
+    }
 
-  /**
-   * Returns general report information.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getReportInfo(&$results) {
-    return <<<HTML
+    /**
+     * Queries the Core Reporting API for the top 25 organic search terms
+     * ordered by visits. Because the table id comes from the query parameter
+     * it needs to be URI decoded.
+     * @param string $tableId The value of the ids parameter in the
+     *     Core Reporting API. This is the ga namespaced profile ID. It has the
+     *     format of ga:xxxx where xxxx is the profile ID. You can get this
+     *     value from the Management API. See the helloAnalytics.php example
+     *     for details.
+     * @return GaData The results from the Core Reporting API.
+     */
+    private function queryCoreReportingApi($tableId)
+    {
+
+        $optParams = array(
+            'dimensions' => 'ga:source,ga:keyword',
+            'sort' => '-ga:visits,ga:keyword',
+            'filters' => 'ga:medium==organic',
+            'max-results' => '25');
+
+        return $this->analytics->data_ga->get(
+            urldecode($tableId),
+            '2010-01-01',
+            '2010-01-15',
+            'ga:visits',
+            $optParams);
+    }
+
+    /**
+     * Returns the results from the API as a HTML formatted string.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getFormattedResults(&$results)
+    {
+        return implode('', array(
+            $this->getReportInfo($results),
+            $this->getPaginationInfo($results),
+            $this->getProfileInformation($results),
+            $this->getQueryParameters($results),
+            $this->getColumnHeaders($results),
+            $this->getTotalsForAllResults($results),
+            $this->getRows($results)
+        ));
+
+    }
+
+    /**
+     * Returns general report information.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getReportInfo(&$results)
+    {
+        return <<<HTML
 <h3>Report Information</h3>
 <pre>
 Contains Sampled Data = {$results->getContainsSampledData()}
@@ -143,15 +149,16 @@ ID                    = {$results->getId()}
 Self Link             = {$results->getSelfLink()}
 </pre>
 HTML;
-  }
+    }
 
-  /**
-   * Returns pagination information.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getPaginationInfo(&$results) {
-    return<<<HTML
+    /**
+     * Returns pagination information.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getPaginationInfo(&$results)
+    {
+        return <<<HTML
 <h3>Pagination Info</h3>
 <pre>
 Items per page = {$results->getItemsPerPage()}
@@ -160,18 +167,19 @@ Previous Link  = {$results->getPreviousLink()}
 Next Link      = {$results->getNextLink()}
 </pre>
 HTML;
-  }
+    }
 
-  /**
-   * Returns profile information describing the profile being accessed
-   * by the API.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getProfileInformation(&$results) {
-    $profileInfo = $results->getProfileInfo();
+    /**
+     * Returns profile information describing the profile being accessed
+     * by the API.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getProfileInformation(&$results)
+    {
+        $profileInfo = $results->getProfileInfo();
 
-    return<<<HTML
+        return <<<HTML
 <h3>Profile Information</h3>
 <pre>
 Account ID               = {$profileInfo->getAccountId()}
@@ -182,122 +190,127 @@ Table ID                 = {$profileInfo->getTableId()}
 Profile Name             = {$profileInfo->getProfileName()}
 </pre>
 HTML;
-  }
-
-  /**
-   * Returns all the query parameters in the initial API query.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getQueryParameters(&$results) {
-    $query = $results->getQuery();
-
-    $html = '<h3>Query Parameters</h3><pre>';
-    foreach ($query as $paramName => $value) {
-      $html .= "$paramName = $value\n";
     }
-    $html .= '</pre>';
-    return $html;
-  }
 
-  /**
-   * Returns all the column headers for the table view.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getColumnHeaders(&$results) {
-    $html = '<h3>Column Headers</h3><pre>';
+    /**
+     * Returns all the query parameters in the initial API query.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getQueryParameters(&$results)
+    {
+        $query = $results->getQuery();
 
-    $headers = $results->getColumnHeaders();
-    foreach ($headers as $header) {
-      $html .= <<<HTML
+        $html = '<h3>Query Parameters</h3><pre>';
+        foreach ($query as $paramName => $value) {
+            $html .= "$paramName = $value\n";
+        }
+        $html .= '</pre>';
+        return $html;
+    }
+
+    /**
+     * Returns all the column headers for the table view.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getColumnHeaders(&$results)
+    {
+        $html = '<h3>Column Headers</h3><pre>';
+
+        $headers = $results->getColumnHeaders();
+        foreach ($headers as $header) {
+            $html .= <<<HTML
 
 Column Name = {$header->getName()}
 Column Type = {$header->getColumnType()}
 Data Type   = {$header->getDataType()}
 
 HTML;
+        }
+
+        $html .= '</pre>';
+        return $html;
     }
 
-    $html .= '</pre>';
-    return $html;
-  }
+    /**
+     * Returns the totals for all the results.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getTotalsForAllResults(&$results)
+    {
 
-  /**
-   * Returns the totals for all the results.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getTotalsForAllResults(&$results) {
+        $rowCount = count($results->getRows());
+        $totalResults = $results->getTotalResults();
 
-    $rowCount = count($results->getRows());
-    $totalResults = $results->getTotalResults();
+        $html = '<h3>Total Metrics For All Results</h3>';
+        $html .= "<p>This query returned $rowCount rows. <br>";
+        $html .= "But the query matched $totalResults total results. <br>";
+        $html .= 'Here are the metric totals for the matched results.</p>';
+        $html .= '<pre>';
 
-    $html = '<h3>Total Metrics For All Results</h3>';
-    $html .= "<p>This query returned $rowCount rows. <br>";
-    $html .= "But the query matched $totalResults total results. <br>";
-    $html .= 'Here are the metric totals for the matched results.</p>';
-    $html .= '<pre>';
-
-    $totals = $results->getTotalsForAllResults();
-    foreach ($totals as $metricName => $metricTotal) {
-      $html .= "Metric Name  = $metricName\n";
-      $html .= "Metric Total = $metricTotal";
-    }
-    $html .= '</pre>';
-    return $html;
-  }
-
-  /**
-   * Returns the rows of data as an HTML Table.
-   * @param GaData $results The results from the Core Reporting API.
-   * @return string The formatted results.
-   */
-  private function getRows($results) {
-    $table = '<h3>Rows Of Data</h3>';
-
-    if (count($results->getRows()) > 0) {
-      $table .= '<table>';
-
-      // Print headers.
-      $table .= '<tr>';
-
-      foreach ($results->getColumnHeaders() as $header) {
-        $table .= '<th>' . $header->name . '</th>';
-      }
-      $table .= '</tr>';
-
-      // Print table rows.
-      foreach ($results->getRows() as $row) {
-        $table .= '<tr>';
-          foreach ($row as $cell) {
-            $table .= '<td>'
-                   . htmlspecialchars($cell, ENT_NOQUOTES)
-                   . '</td>';
-          }
-        $table .= '</tr>';
-      }
-      $table .= '</table>';
-
-    } else {
-      $table .= '<p>No results found.</p>';
+        $totals = $results->getTotalsForAllResults();
+        foreach ($totals as $metricName => $metricTotal) {
+            $html .= "Metric Name  = $metricName\n";
+            $html .= "Metric Total = $metricTotal";
+        }
+        $html .= '</pre>';
+        return $html;
     }
 
-    return $table;
-  }
+    /**
+     * Returns the rows of data as an HTML Table.
+     * @param GaData $results The results from the Core Reporting API.
+     * @return string The formatted results.
+     */
+    private function getRows($results)
+    {
+        $table = '<h3>Rows Of Data</h3>';
 
-  /**
-   * Returns an HTML form for the user to supply their Table ID. This
-   * form uses GET to pass the tableId back to the controller. The
-   * controller
-   * then passes the ID onto the demo.
-   * @param string $tableId The table ID value to add to the HTML form
-   * @return string The HTML form.
-   */
-  private function getHtmlForm($tableId) {
-    $tableId = htmlspecialchars($tableId);
+        if (count($results->getRows()) > 0) {
+            $table .= '<table>';
 
-    return <<<HTML
+            // Print headers.
+            $table .= '<tr>';
+
+            foreach ($results->getColumnHeaders() as $header) {
+                $table .= '<th>' . $header->name . '</th>';
+            }
+            $table .= '</tr>';
+
+            // Print table rows.
+            foreach ($results->getRows() as $row) {
+                $table .= '<tr>';
+                foreach ($row as $cell) {
+                    $table .= '<td>'
+                        . htmlspecialchars($cell, ENT_NOQUOTES)
+                        . '</td>';
+                }
+                $table .= '</tr>';
+            }
+            $table .= '</table>';
+
+        } else {
+            $table .= '<p>No results found.</p>';
+        }
+
+        return $table;
+    }
+
+    /**
+     * Returns an HTML form for the user to supply their Table ID. This
+     * form uses GET to pass the tableId back to the controller. The
+     * controller
+     * then passes the ID onto the demo.
+     * @param string $tableId The table ID value to add to the HTML form
+     * @return string The HTML form.
+     */
+    private function getHtmlForm($tableId)
+    {
+        $tableId = htmlspecialchars($tableId);
+
+        return <<<HTML
 <form name="gaForm" action="$this->controllerUrl" method="get">
   <p>Please enter your Table ID <input type="text" id="tableId" name="tableId" value="$tableId"></p>
   <p>Format should be ga:xxx where xxx is your profile ID.</p>
@@ -306,13 +319,14 @@ HTML;
 </form>
 <hr>
 HTML;
-  }
+    }
 
- /**
-  * @return string Any error that occurred.
-  */
-  function getError() {
-    return $this->error;
-  }
+    /**
+     * @return string Any error that occurred.
+     */
+    function getError()
+    {
+        return $this->error;
+    }
 }
 

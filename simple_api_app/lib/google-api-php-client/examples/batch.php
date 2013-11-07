@@ -31,32 +31,32 @@ $plus = new Google_PlusService($client);
 // $client->setDeveloperKey('insert_your_developer_key');
 
 if (isset($_GET['logout'])) {
-  unset($_SESSION['token']);
+    unset($_SESSION['token']);
 }
 
 if (isset($_GET['code'])) {
-  $client->authenticate();
-  $_SESSION['token'] = $client->getAccessToken();
-  $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
-  header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
+    $client->authenticate();
+    $_SESSION['token'] = $client->getAccessToken();
+    $redirect = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['PHP_SELF'];
+    header('Location: ' . filter_var($redirect, FILTER_SANITIZE_URL));
 }
 
 if (isset($_SESSION['token'])) {
-  $client->setAccessToken($_SESSION['token']);
+    $client->setAccessToken($_SESSION['token']);
 }
 
 if ($client->getAccessToken()) {
-  $client->setUseBatch(true);
- 
-  $batch = new Google_BatchRequest();
-  $batch->add($plus->people->get('me'), 'key1');
-  $batch->add($plus->people->get('me'), 'key2');
-  $result = $batch->execute();
-  print "<pre>" . print_r($result, true) . "</pre>";
+    $client->setUseBatch(true);
 
-  // The access token may have been updated lazily.
-  $_SESSION['token'] = $client->getAccessToken();
+    $batch = new Google_BatchRequest();
+    $batch->add($plus->people->get('me'), 'key1');
+    $batch->add($plus->people->get('me'), 'key2');
+    $result = $batch->execute();
+    print "<pre>" . print_r($result, true) . "</pre>";
+
+    // The access token may have been updated lazily.
+    $_SESSION['token'] = $client->getAccessToken();
 } else {
-  $authUrl = $client->createAuthUrl();
-  print "<a class='login' href='$authUrl'>Connect Me!</a>";
+    $authUrl = $client->createAuthUrl();
+    print "<a class='login' href='$authUrl'>Connect Me!</a>";
 }

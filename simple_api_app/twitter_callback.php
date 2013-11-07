@@ -1,5 +1,5 @@
 <?php
-/**
+/** This file based on TwitterOAuth example file.
  * @file
  * Take the user when they return from Twitter. Get access tokens.
  * Verify credentials and redirect to based on response from Twitter.

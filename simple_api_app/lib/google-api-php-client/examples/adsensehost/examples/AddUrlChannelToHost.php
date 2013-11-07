@@ -26,20 +26,22 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class AddUrlChannelToHost extends BaseExample {
-  public function render() {
-    $adClientId = HOST_AD_CLIENT_ID;
+class AddUrlChannelToHost extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = HOST_AD_CLIENT_ID;
 
-    $urlChannel = new Google_UrlChannel();
-    $urlChannel->setUrlPattern(sprintf('www.example.com/%s',
-      $this->getUniqueName()));
+        $urlChannel = new Google_UrlChannel();
+        $urlChannel->setUrlPattern(sprintf('www.example.com/%s',
+            $this->getUniqueName()));
 
-    // Retrieve URL channels list, and display it.
-    $result = $this->adSenseHostService->urlchannels
-        ->insert($adClientId, $urlChannel);
-    $mainFormat = 'URL channel with id "%s" and URL pattern "%s" was created.';
-    $content = sprintf($mainFormat, $result['id'], $result['urlPattern']);
-    print $content;
-  }
+        // Retrieve URL channels list, and display it.
+        $result = $this->adSenseHostService->urlchannels
+            ->insert($adClientId, $urlChannel);
+        $mainFormat = 'URL channel with id "%s" and URL pattern "%s" was created.';
+        $content = sprintf($mainFormat, $result['id'], $result['urlPattern']);
+        print $content;
+    }
 }
 

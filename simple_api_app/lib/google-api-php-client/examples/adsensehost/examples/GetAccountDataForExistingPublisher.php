@@ -25,31 +25,33 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAccountDataForExistingPublisher extends BaseExample {
-  public function render() {
-    $adClientId = PUBLISHER_AD_CLIENT_ID;
-    $listClass = 'list';
-    printListHeader($listClass);
-    $pageToken = null;
-    do {
-      // Retrieve account list, and display it.
-      $result = $this->adSenseHostService->accounts->listAccounts(
-          array($adClientId));
-      $accounts = $result['items'];
-      if (isset($accounts)) {
-        foreach ($accounts as $account) {
-          $frmt = 'Account with ID "%s", name "%s" and status "%s" was found.';
-          $content = sprintf($frmt, $account['id'], $account['name'],
-              $account['status']);
-          printListElement($content);
-        }
-        $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
-            : null;
-      } else {
-        printNoResultForList();
-      }
-    } while ($pageToken);
-    printListFooter();
-  }
+class GetAccountDataForExistingPublisher extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = PUBLISHER_AD_CLIENT_ID;
+        $listClass = 'list';
+        printListHeader($listClass);
+        $pageToken = null;
+        do {
+            // Retrieve account list, and display it.
+            $result = $this->adSenseHostService->accounts->listAccounts(
+                array($adClientId));
+            $accounts = $result['items'];
+            if (isset($accounts)) {
+                foreach ($accounts as $account) {
+                    $frmt = 'Account with ID "%s", name "%s" and status "%s" was found.';
+                    $content = sprintf($frmt, $account['id'], $account['name'],
+                        $account['status']);
+                    printListElement($content);
+                }
+                $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
+                    : null;
+            } else {
+                printNoResultForList();
+            }
+        } while ($pageToken);
+        printListFooter();
+    }
 }
 

@@ -25,27 +25,29 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAllDimensions extends BaseExample {
-  public function render() {
-    $listClass = 'list';
-    printListHeader($listClass);
-    // Retrieve dimension list, and display it.
-    $result = $this->adSenseService->metadata_dimensions
-        ->listMetadataDimensions();
-    if (isset($result['items'])) {
-      $dimensions = $result['items'];
-      foreach ($dimensions as $dimension) {
-        $format = 'Dimension id "%s" for product(s): [%s] was found.';
-        $content = sprintf(
-            $format,
-            $dimension['id'],
-            implode(', ', $dimension['supportedProducts']));
-        printListElement($content);
-      }
-    } else {
-      printNoResultForList();
+class GetAllDimensions extends BaseExample
+{
+    public function render()
+    {
+        $listClass = 'list';
+        printListHeader($listClass);
+        // Retrieve dimension list, and display it.
+        $result = $this->adSenseService->metadata_dimensions
+            ->listMetadataDimensions();
+        if (isset($result['items'])) {
+            $dimensions = $result['items'];
+            foreach ($dimensions as $dimension) {
+                $format = 'Dimension id "%s" for product(s): [%s] was found.';
+                $content = sprintf(
+                    $format,
+                    $dimension['id'],
+                    implode(', ', $dimension['supportedProducts']));
+                printListElement($content);
+            }
+        } else {
+            printNoResultForList();
+        }
+        printListFooter();
     }
-    printListFooter();
-  }
 }
 

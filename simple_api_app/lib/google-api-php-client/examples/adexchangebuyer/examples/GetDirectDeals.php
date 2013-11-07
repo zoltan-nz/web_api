@@ -26,28 +26,31 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author David Torres <david.t@google.com>
  */
-class GetDirectDeals extends BaseExample {
-  public function run() {
-    $result = $this->service->directDeals->listDirectDeals();
+class GetDirectDeals extends BaseExample
+{
+    public function run()
+    {
+        $result = $this->service->directDeals->listDirectDeals();
 
-    printf('<h2>Listing of user associated direct deals</h2>');
+        printf('<h2>Listing of user associated direct deals</h2>');
 
-    if (!isset($result['direct_deals']) || !count($result['direct_deals'])) {
-      print '<p>No direct deals found</p>';
-      return;
+        if (!isset($result['direct_deals']) || !count($result['direct_deals'])) {
+            print '<p>No direct deals found</p>';
+            return;
+        }
+        foreach ($result['direct_deals'] as $directDeal) {
+            $this->printResult($directDeal);
+        }
     }
-    foreach ($result['direct_deals'] as $directDeal) {
-      $this->printResult($directDeal);
-    }
-  }
 
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getName()
-   * @return string
-   */
-  public function getName() {
-    return "Get Direct Deals";
-  }
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getName()
+     * @return string
+     */
+    public function getName()
+    {
+        return "Get Direct Deals";
+    }
 }
 

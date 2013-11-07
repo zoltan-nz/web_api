@@ -27,33 +27,35 @@ require_once __DIR__ . "/../BaseExample.php";
  * @author Sérgio Gomes <sgomes@google.com>
  * @author Silvano Luciani <silvano.luciani@gmail.com>
  */
-class GetAllUrlChannelsForHost extends BaseExample {
-  public function render() {
-    $adClientId = HOST_AD_CLIENT_ID;
-    $optParams['maxResults'] = MAX_PAGE_SIZE;
-    $listClass = 'list';
-    printListHeader($listClass);
-    $pageToken = null;
-    do {
-      $optParams['pageToken'] = $pageToken;
-      // Retrieve URL channels list and display it.
-      $result = $this->adSenseHostService->urlchannels
-          ->listUrlchannels($adClientId, $optParams);
-      $urlChannels = $result['items'];
-      if (isset($urlChannels)) {
-        foreach ($urlChannels as $urlChannel) {
-          $format = 'URL channel with ID "%s" and URL pattern "%s" was found.';
-          $content = sprintf($format, $urlChannel['id'],
-              $urlChannel['urlPattern']);
-          printListElement($content);
-        }
-        $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
-            : null;
-      } else {
-        printNoResultForList();
-      }
-    } while ($pageToken);
-    printListFooter();
-  }
+class GetAllUrlChannelsForHost extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = HOST_AD_CLIENT_ID;
+        $optParams['maxResults'] = MAX_PAGE_SIZE;
+        $listClass = 'list';
+        printListHeader($listClass);
+        $pageToken = null;
+        do {
+            $optParams['pageToken'] = $pageToken;
+            // Retrieve URL channels list and display it.
+            $result = $this->adSenseHostService->urlchannels
+                ->listUrlchannels($adClientId, $optParams);
+            $urlChannels = $result['items'];
+            if (isset($urlChannels)) {
+                foreach ($urlChannels as $urlChannel) {
+                    $format = 'URL channel with ID "%s" and URL pattern "%s" was found.';
+                    $content = sprintf($format, $urlChannel['id'],
+                        $urlChannel['urlPattern']);
+                    printListElement($content);
+                }
+                $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
+                    : null;
+            } else {
+                printNoResultForList();
+            }
+        } while ($pageToken);
+        printListFooter();
+    }
 }
 

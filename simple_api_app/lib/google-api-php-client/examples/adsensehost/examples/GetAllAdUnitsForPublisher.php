@@ -26,35 +26,37 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAllAdUnitsForPublisher extends BaseExample {
-  public function render() {
-    $adClientId = PUBLISHER_AD_CLIENT_ID;
-    $accountId = PUBLISHER_ACCOUNT_ID;
-    $optParams['maxResults'] = MAX_PAGE_SIZE;
-    $listClass = 'list';
-    printListHeader($listClass);
-    $pageToken = null;
-    do {
-      $optParams['pageToken'] = $pageToken;
-      // Retrieve ad unit list, and display it.
-      $result = $this->adSenseHostService->accounts_adunits
-          ->listAccountsAdunits($accountId, $adClientId, $optParams);
-      if (isset($result['items'])) {
-        $adUnits = $result['items'];
-        foreach ($adUnits as $adUnit) {
-          $content = sprintf('Ad unit with ID "%s", code "%s", name "%s" and ' .
-              'status "%s" was found.',
-              $adUnit['id'], $adUnit['code'], $adUnit['name'],
-              $adUnit['status']);
-          printListElement($content);
-        }
-        $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
-            : null;
-      } else {
-        printNoResultForList();
-      }
-    } while ($pageToken);
-    printListFooter();
-  }
+class GetAllAdUnitsForPublisher extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = PUBLISHER_AD_CLIENT_ID;
+        $accountId = PUBLISHER_ACCOUNT_ID;
+        $optParams['maxResults'] = MAX_PAGE_SIZE;
+        $listClass = 'list';
+        printListHeader($listClass);
+        $pageToken = null;
+        do {
+            $optParams['pageToken'] = $pageToken;
+            // Retrieve ad unit list, and display it.
+            $result = $this->adSenseHostService->accounts_adunits
+                ->listAccountsAdunits($accountId, $adClientId, $optParams);
+            if (isset($result['items'])) {
+                $adUnits = $result['items'];
+                foreach ($adUnits as $adUnit) {
+                    $content = sprintf('Ad unit with ID "%s", code "%s", name "%s" and ' .
+                        'status "%s" was found.',
+                        $adUnit['id'], $adUnit['code'], $adUnit['name'],
+                        $adUnit['status']);
+                    printListElement($content);
+                }
+                $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
+                    : null;
+            } else {
+                printNoResultForList();
+            }
+        } while ($pageToken);
+        printListFooter();
+    }
 }
 

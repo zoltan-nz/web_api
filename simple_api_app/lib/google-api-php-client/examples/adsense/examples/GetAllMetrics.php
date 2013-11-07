@@ -25,26 +25,28 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAllMetrics extends BaseExample {
-  public function render() {
-    $listClass = 'list';
-    printListHeader($listClass);
-    // Retrieve metric list, and display it.
-    $result = $this->adSenseService->metadata_metrics->listMetadataMetrics();
-    if (isset($result['items'])) {
-      $metrics = $result['items'];
-      foreach ($metrics as $metric) {
-        $format = 'Metric id "%s" for product(s): [%s] was found.';
-        $content = sprintf(
-            $format,
-            $metric['id'],
-            implode(', ', $metric['supportedProducts']));
-        printListElement($content);
-      }
-    } else {
-      printNoResultForList();
+class GetAllMetrics extends BaseExample
+{
+    public function render()
+    {
+        $listClass = 'list';
+        printListHeader($listClass);
+        // Retrieve metric list, and display it.
+        $result = $this->adSenseService->metadata_metrics->listMetadataMetrics();
+        if (isset($result['items'])) {
+            $metrics = $result['items'];
+            foreach ($metrics as $metric) {
+                $format = 'Metric id "%s" for product(s): [%s] was found.';
+                $content = sprintf(
+                    $format,
+                    $metric['id'],
+                    implode(', ', $metric['supportedProducts']));
+                printListElement($content);
+            }
+        } else {
+            printNoResultForList();
+        }
+        printListFooter();
     }
-    printListFooter();
-  }
 }
 

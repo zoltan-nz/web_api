@@ -31,27 +31,29 @@ define('PUBLISHER_AD_UNIT_ID', 'INSERT_AD_UNIT_ID_HERE');
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class UpdateAdUnitOnPublisher extends BaseExample {
-  public function render() {
-    $accountId = PUBLISHER_ACCOUNT_ID;
-    $adClientId = PUBLISHER_AD_CLIENT_ID;
-    $adUnitId = PUBLISHER_AD_UNIT_ID;
+class UpdateAdUnitOnPublisher extends BaseExample
+{
+    public function render()
+    {
+        $accountId = PUBLISHER_ACCOUNT_ID;
+        $adClientId = PUBLISHER_AD_CLIENT_ID;
+        $adUnitId = PUBLISHER_AD_UNIT_ID;
 
-    $adUnit = new Google_AdUnit();
-    $contentAdsSettings = new Google_AdUnitContentAdsSettings();
-    $customStyle = new Google_AdStyle();
-    $colors = new Google_AdStyleColors();
-    $colors->setText('ff0000');
-    $customStyle->setColors($colors);
-    $adUnit->setCustomStyle($customStyle);
+        $adUnit = new Google_AdUnit();
+        $contentAdsSettings = new Google_AdUnitContentAdsSettings();
+        $customStyle = new Google_AdStyle();
+        $colors = new Google_AdStyleColors();
+        $colors->setText('ff0000');
+        $customStyle->setColors($colors);
+        $adUnit->setCustomStyle($customStyle);
 
-    // Retrieve custom channels list, and display it.
-    $result = $this->adSenseHostService->accounts_adunits
-        ->patch($accountId, $adClientId, $adUnitId, $adUnit);
-    $mainFormat = 'Ad unit with ID "%s" was updated with text color "%s".';
-    $content = sprintf($mainFormat, $result['id'],
-        $result['customStyle']['colors']['text']);
-    print $content;
-  }
+        // Retrieve custom channels list, and display it.
+        $result = $this->adSenseHostService->accounts_adunits
+            ->patch($accountId, $adClientId, $adUnitId, $adUnit);
+        $mainFormat = 'Ad unit with ID "%s" was updated with text color "%s".';
+        $content = sprintf($mainFormat, $result['id'],
+            $result['customStyle']['colors']['text']);
+        print $content;
+    }
 }
 

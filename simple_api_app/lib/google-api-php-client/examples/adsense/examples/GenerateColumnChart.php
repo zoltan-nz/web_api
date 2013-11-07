@@ -23,40 +23,42 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Silvano Luciani <silvano.luciani@gmail.com>
  */
-class GenerateColumnChart extends BaseExample {
-  public function render() {
-    $startDate = $this->getSixMonthsBeforeNow();
-    $endDate = $this->getNow();
-    $optParams = array(
-        'metric' => array('PAGE_VIEWS', 'AD_REQUESTS', 'MATCHED_AD_REQUESTS',
-            'INDIVIDUAL_AD_IMPRESSIONS'),
-        'dimension' => array('MONTH'),
-        'sort' => 'MONTH'
-    );
-    // Retrieve report.
-    $report = $this->adSenseService->reports
-        ->generate($startDate, $endDate, $optParams);
-    $data = $report['rows'];
-    // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
-      $row[2] = (int)$row[2];
-      $row[3] = (int)$row[3];
-      $row[4] = (int)$row[4];
+class GenerateColumnChart extends BaseExample
+{
+    public function render()
+    {
+        $startDate = $this->getSixMonthsBeforeNow();
+        $endDate = $this->getNow();
+        $optParams = array(
+            'metric' => array('PAGE_VIEWS', 'AD_REQUESTS', 'MATCHED_AD_REQUESTS',
+                'INDIVIDUAL_AD_IMPRESSIONS'),
+            'dimension' => array('MONTH'),
+            'sort' => 'MONTH'
+        );
+        // Retrieve report.
+        $report = $this->adSenseService->reports
+            ->generate($startDate, $endDate, $optParams);
+        $data = $report['rows'];
+        // We need to convert the metrics to numeric values for the chart.
+        foreach ($data as &$row) {
+            $row[1] = (int)$row[1];
+            $row[2] = (int)$row[2];
+            $row[3] = (int)$row[3];
+            $row[4] = (int)$row[4];
+        }
+        $data = json_encode($data);
+        $columns = array(
+            array('string', 'Month'),
+            array('number', 'Page views'),
+            array('number', 'Ad requests'),
+            array('number', 'Matched ad requests'),
+            array('number', 'Individual ad impressions')
+        );
+        $type = 'ColumnChart';
+        $options = json_encode(
+            array('title' => 'Performances per month')
+        );
+        print generateChartHtml($data, $columns, $type, $options);
     }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Month'),
-      array('number', 'Page views'),
-      array('number', 'Ad requests'),
-      array('number', 'Matched ad requests'),
-      array('number', 'Individual ad impressions')
-    );
-    $type = 'ColumnChart';
-    $options = json_encode(
-      array('title' => 'Performances per month')
-    );
-    print generateChartHtml($data, $columns, $type, $options);
-  }
 }
 

@@ -16,7 +16,7 @@ if (isset($_SESSION['status']) and $_SESSION['status'] == 'verified') {
 
     /* Create a TwitterOauth object with consumer/user tokens. */
     $connection = new TwitterOAuth(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, $access_token['oauth_token'], $access_token['oauth_token_secret']);
-
+    // we use statuses/update api call for post status what we get from $_Post.
     $_SESSION['twitter_post_result'] = $connection->post('statuses/update', array('status' => $_POST['status']));
 
     header('Location: ./index.php#twitter_post_form');
@@ -25,4 +25,4 @@ if (isset($_SESSION['status']) and $_SESSION['status'] == 'verified') {
 }
 
 
-include (LAYOUT_PATH.'/footer.php');
+include(LAYOUT_PATH . '/footer.php');

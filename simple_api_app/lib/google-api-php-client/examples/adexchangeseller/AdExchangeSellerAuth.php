@@ -17,7 +17,7 @@
 
 // Error if PDO and PDO_SQLITE not present
 if (!extension_loaded('pdo') || !extension_loaded('pdo_sqlite')) {
-  throw new Exception('The sample code needs PDO and PDO_SQLITE PHP extension');
+    throw new Exception('The sample code needs PDO and PDO_SQLITE PHP extension');
 }
 
 /**
@@ -37,107 +37,114 @@ require_once "../../src/contrib/Google_AdExchangeSellerService.php";
  * @author Sergio Gomes <sgomes@google.com>
  */
 
-class AdExchangeSellerAuth {
-  protected $apiClient;
-  protected $adExchangeSellerService;
-  private $user;
+class AdExchangeSellerAuth
+{
+    protected $apiClient;
+    protected $adExchangeSellerService;
+    private $user;
 
-  /**
-   * Create the dependencies.
-   * (Inject them in a real world app!!)
-   */
-  public function __construct() {
-    // Create the apiClient instances.
-    $this->apiClient = new Google_Client();
-    // Visit https://code.google.com/apis/console?api=adexchangeseller to
-    // generate your oauth2_client_id, oauth2_client_secret, and to
-    // register your oauth2_redirect_uri.
-    $this->apiClient->setClientId('YOUR_CLIENT_ID_HERE');
-    $this->apiClient->setClientSecret('YOUR_CLIENT_SECRET_HERE');
-    $this->apiClient->setDeveloperKey('YOUR_DEVELOPER_KEY_HERE');
-    // Point the oauth2_redirect_uri to index.php.
-    $this->apiClient->setRedirectUri('http://localhost/index.php');
-    // Create the api Google_AdExchangeSellerService instance.
-    $this->adExchangeSellerService =
-        new Google_AdExchangeSellerService($this->apiClient);
-  }
-
-  /**
-   * Check if a token for the user is already in the db, otherwise perform
-   * authentication.
-   * @param string $user The user to authenticate
-   */
-  public function authenticate($user) {
-    $this->user = $user;
-    $dbh = new PDO('sqlite:examples.sqlite');
-    $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    $stmt = $dbh->prepare('CREATE TABLE IF NOT EXISTS auth ' .
-        '(user VARCHAR(255), token VARCHAR(255))');
-    $stmt->execute();
-    $token = $this->getToken($dbh);
-    if (isset($token)) {
-      // I already have the token.
-      $this->apiClient->setAccessToken($token);
-    } else {
-      // Override the scope to use the readonly one
-      $this->apiClient->setScopes(
-          array("https://www.googleapis.com/auth/adexchange.seller.readonly"));
-      // Go get the token
-      $this->apiClient->setAccessToken($this->apiClient->authenticate());
-      $this->saveToken($dbh, false, $this->apiClient->getAccessToken());
+    /**
+     * Create the dependencies.
+     * (Inject them in a real world app!!)
+     */
+    public function __construct()
+    {
+        // Create the apiClient instances.
+        $this->apiClient = new Google_Client();
+        // Visit https://code.google.com/apis/console?api=adexchangeseller to
+        // generate your oauth2_client_id, oauth2_client_secret, and to
+        // register your oauth2_redirect_uri.
+        $this->apiClient->setClientId('YOUR_CLIENT_ID_HERE');
+        $this->apiClient->setClientSecret('YOUR_CLIENT_SECRET_HERE');
+        $this->apiClient->setDeveloperKey('YOUR_DEVELOPER_KEY_HERE');
+        // Point the oauth2_redirect_uri to index.php.
+        $this->apiClient->setRedirectUri('http://localhost/index.php');
+        // Create the api Google_AdExchangeSellerService instance.
+        $this->adExchangeSellerService =
+            new Google_AdExchangeSellerService($this->apiClient);
     }
-    $dbh = null;
-  }
 
-  /**
-   * Return the Google_AdExchangeSellerService instance (to be used to retrieve
-   * data).
-   * @return Google_AdExchangeSellerService the authenticated
-   * Google_AdExchangeSellerService instance
-   */
-  public function getAdExchangeSellerService() {
-    return $this->adExchangeSellerService;
-  }
-
-  /**
-   * During the request, the access code might have been changed for another.
-   * This function updates the token in the db.
-   */
-  public function refreshToken() {
-    if ($this->apiClient->getAccessToken() != null) {
-      $dbh = new PDO('sqlite:examples.sqlite');
-      $this->saveToken($dbh, true, $this->apiClient->getAccessToken());
+    /**
+     * Check if a token for the user is already in the db, otherwise perform
+     * authentication.
+     * @param string $user The user to authenticate
+     */
+    public function authenticate($user)
+    {
+        $this->user = $user;
+        $dbh = new PDO('sqlite:examples.sqlite');
+        $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $stmt = $dbh->prepare('CREATE TABLE IF NOT EXISTS auth ' .
+            '(user VARCHAR(255), token VARCHAR(255))');
+        $stmt->execute();
+        $token = $this->getToken($dbh);
+        if (isset($token)) {
+            // I already have the token.
+            $this->apiClient->setAccessToken($token);
+        } else {
+            // Override the scope to use the readonly one
+            $this->apiClient->setScopes(
+                array("https://www.googleapis.com/auth/adexchange.seller.readonly"));
+            // Go get the token
+            $this->apiClient->setAccessToken($this->apiClient->authenticate());
+            $this->saveToken($dbh, false, $this->apiClient->getAccessToken());
+        }
+        $dbh = null;
     }
-  }
 
-  /**
-   * Insert/update the auth token for the user.
-   * @param PDO $dbh a PDO object for the local authentication db
-   * @param bool $userExists true if the user already exists in the db
-   * @param string $token the auth token to be saved
-   */
-  private function saveToken($dbh, $userExists, $token) {
-    if ($userExists) {
-      $stmt = $dbh->prepare('UPDATE auth SET token=:token WHERE user=:user');
-    } else {
-      $stmt = $dbh
-          ->prepare('INSERT INTO auth (user, token) VALUES (:user, :token)');
+    /**
+     * Return the Google_AdExchangeSellerService instance (to be used to retrieve
+     * data).
+     * @return Google_AdExchangeSellerService the authenticated
+     * Google_AdExchangeSellerService instance
+     */
+    public function getAdExchangeSellerService()
+    {
+        return $this->adExchangeSellerService;
     }
-    $stmt->bindParam(':user', $this->user);
-    $stmt->bindParam(':token', $this->apiClient->getAccessToken());
-    $stmt->execute();
-  }
 
-  /**
-   * Retrieves token for use.
-   * @param PDO $dbh a PDO object for the local authentication db
-   * @return string a JSON object representing the token
-   */
-  private function getToken($dbh) {
-    $stmt = $dbh->prepare('SELECT token FROM auth WHERE user= ?');
-    $stmt->execute(array($this->user));
-    $row = $stmt->fetch(PDO::FETCH_ASSOC);
-    return $row['token'];
-  }
+    /**
+     * During the request, the access code might have been changed for another.
+     * This function updates the token in the db.
+     */
+    public function refreshToken()
+    {
+        if ($this->apiClient->getAccessToken() != null) {
+            $dbh = new PDO('sqlite:examples.sqlite');
+            $this->saveToken($dbh, true, $this->apiClient->getAccessToken());
+        }
+    }
+
+    /**
+     * Insert/update the auth token for the user.
+     * @param PDO $dbh a PDO object for the local authentication db
+     * @param bool $userExists true if the user already exists in the db
+     * @param string $token the auth token to be saved
+     */
+    private function saveToken($dbh, $userExists, $token)
+    {
+        if ($userExists) {
+            $stmt = $dbh->prepare('UPDATE auth SET token=:token WHERE user=:user');
+        } else {
+            $stmt = $dbh
+                ->prepare('INSERT INTO auth (user, token) VALUES (:user, :token)');
+        }
+        $stmt->bindParam(':user', $this->user);
+        $stmt->bindParam(':token', $this->apiClient->getAccessToken());
+        $stmt->execute();
+    }
+
+    /**
+     * Retrieves token for use.
+     * @param PDO $dbh a PDO object for the local authentication db
+     * @return string a JSON object representing the token
+     */
+    private function getToken($dbh)
+    {
+        $stmt = $dbh->prepare('SELECT token FROM auth WHERE user= ?');
+        $stmt->execute(array($this->user));
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $row['token'];
+    }
 }
 

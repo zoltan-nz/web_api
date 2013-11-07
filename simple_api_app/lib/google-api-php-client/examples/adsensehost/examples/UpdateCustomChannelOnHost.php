@@ -31,22 +31,24 @@ define('CUSTOM_CHANNEL_ID', 'INSERT_CUSTOM_CHANNEL_ID_HERE');
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class UpdateCustomChannelOnHost extends BaseExample {
-  public function render() {
-    $adClientId = HOST_AD_CLIENT_ID;
-    $customChannelId = CUSTOM_CHANNEL_ID;
+class UpdateCustomChannelOnHost extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = HOST_AD_CLIENT_ID;
+        $customChannelId = CUSTOM_CHANNEL_ID;
 
-    $customChannel = new Google_CustomChannel();
-    $customChannel->setName(sprintf('Updated Sample Channel #%s',
-        $this->getUniqueName()));
+        $customChannel = new Google_CustomChannel();
+        $customChannel->setName(sprintf('Updated Sample Channel #%s',
+            $this->getUniqueName()));
 
-    // Retrieve custom channels list, and display it.
-    $result = $this->adSenseHostService->customchannels
-        ->patch($adClientId, $customChannelId, $customChannel);
-    $mainFormat =
-        'Custom channel with ID "%s" was updated with name "%s".';
-    $content = sprintf($mainFormat, $result['id'], $result['name']);
-    print $content;
-  }
+        // Retrieve custom channels list, and display it.
+        $result = $this->adSenseHostService->customchannels
+            ->patch($adClientId, $customChannelId, $customChannel);
+        $mainFormat =
+            'Custom channel with ID "%s" was updated with name "%s".';
+        $content = sprintf($mainFormat, $result['id'], $result['name']);
+        print $content;
+    }
 }
 

@@ -28,50 +28,55 @@ require_once "htmlHelper.php";
  * @author Sérgio Gomes <sgomes@google.com>
  * @author Silvano Luciani <silvano.luciani@gmail.com>
  */
-abstract class BaseExample {
-  protected $adSenseHostService;
-  protected $dateFormat = 'Y-m-d';
+abstract class BaseExample
+{
+    protected $adSenseHostService;
+    protected $dateFormat = 'Y-m-d';
 
-  /**
-   * Inject the dependency.
-   * @param Google_AdsensehostService $adSenseHostService an authenticated
-   *     instance of Google_AdsensehostService
-   */
-  public function __construct(Google_AdsensehostService $adSenseHostService) {
-    $this->adSenseHostService = $adSenseHostService;
-  }
+    /**
+     * Inject the dependency.
+     * @param Google_AdsensehostService $adSenseHostService an authenticated
+     *     instance of Google_AdsensehostService
+     */
+    public function __construct(Google_AdsensehostService $adSenseHostService)
+    {
+        $this->adSenseHostService = $adSenseHostService;
+    }
 
-  /**
-   * Get the date for the instant of the call.
-   * @return string the date in the format expressed by $this->dateFormat
-   */
-  protected function getNow() {
-    $now = new DateTime();
-    return $now->format($this->dateFormat);
-  }
+    /**
+     * Get the date for the instant of the call.
+     * @return string the date in the format expressed by $this->dateFormat
+     */
+    protected function getNow()
+    {
+        $now = new DateTime();
+        return $now->format($this->dateFormat);
+    }
 
-  /**
-   * Get the date six month before the instant of the call.
-   * @return string the date in the format expressed by $this->dateFormat
-   */
-  protected function getSixMonthsBeforeNow() {
-    $sixMonthsAgo = new DateTime('-6 months');
-    return $sixMonthsAgo->format($this->dateFormat);
-  }
+    /**
+     * Get the date six month before the instant of the call.
+     * @return string the date in the format expressed by $this->dateFormat
+     */
+    protected function getSixMonthsBeforeNow()
+    {
+        $sixMonthsAgo = new DateTime('-6 months');
+        return $sixMonthsAgo->format($this->dateFormat);
+    }
 
-  /**
-   * Returns a unique value to append to various properties in the samples.
-   * @return string unique value
-   */
-  protected function getUniqueName() {
-    $now = new DateTime();
-    return $now->format('YmdHisu');
-  }
+    /**
+     * Returns a unique value to append to various properties in the samples.
+     * @return string unique value
+     */
+    protected function getUniqueName()
+    {
+        $now = new DateTime();
+        return $now->format('YmdHisu');
+    }
 
-  /**
-   * Implemented in the specific example class.
-   */
-  abstract public function render();
+    /**
+     * Implemented in the specific example class.
+     */
+    abstract public function render();
 
 }
 

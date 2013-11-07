@@ -35,16 +35,16 @@ $client->setApplicationName("Google Prediction Sample");
 // real database or memcached.
 session_start();
 if (isset($_SESSION['token'])) {
- $client->setAccessToken($_SESSION['token']);
+    $client->setAccessToken($_SESSION['token']);
 }
 
 // Load the key in PKCS 12 format (you need to download this from the
 // Google API Console when the service account was created.
 $key = file_get_contents(KEY_FILE);
 $client->setAssertionCredentials(new Google_AssertionCredentials(
-    SERVICE_ACCOUNT_NAME,
-    array('https://www.googleapis.com/auth/prediction'),
-    $key)
+        SERVICE_ACCOUNT_NAME,
+        array('https://www.googleapis.com/auth/prediction'),
+        $key)
 );
 
 $client->setClientId(CLIENT_ID);
@@ -65,5 +65,5 @@ print '<h2>Prediction Result:</h2><pre>' . print_r($result, true) . '</pre>';
 // We're not done yet. Remember to update the cached access token.
 // Remember to replace $_SESSION with a real database or memcached.
 if ($client->getAccessToken()) {
-  $_SESSION['token'] = $client->getAccessToken();
+    $_SESSION['token'] = $client->getAccessToken();
 }

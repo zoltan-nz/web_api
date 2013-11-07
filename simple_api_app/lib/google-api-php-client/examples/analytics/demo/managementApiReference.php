@@ -31,122 +31,128 @@
  * instead of the default representation of associative arrays.
  * @author Nick Mihailovski <api.nickm@gmail.com>
  */
-class ManagementApiReference {
+class ManagementApiReference
+{
 
-  /** @var Google_AnalyticsService $analytics */
-  private $analytics;
+    /** @var Google_AnalyticsService $analytics */
+    private $analytics;
 
-  /** @var string $error */
-  private $error = null;
+    /** @var string $error */
+    private $error = null;
 
-  /**
-   * Constructor.
-   * @param $analytics
-   * @internal param \Google_AnalyticsService $analytics The analytics service
-   *     object to make requests to the API.
-   */
-  function __construct(&$analytics) {
-    $this->analytics = $analytics;
-  }
-
-  /**
-   * Returns an HTML string representation of the Management API hierarchy
-   * traversal. Lots of queries occur in the traversal. If any errors occur,
-   * the exceptions are caught and the message is stored in the error.
-   * @return string The HTML representation of the Management API traversal.
-   */
-  function getHtmlOutput() {
-    $output = '';
-
-    try {
-      $output = $this->getTraverseManagementApiHtml();
-    } catch (Google_ServiceException $e) {
-      $this->error = $e->getMessage();
-    } catch (Google_Exception $e) {
-      $this->error = $e->getMessage();
-    } 
-    return $output;
-  }
-
-  /**
-   * Traverses the Management API. A query is made to the Accounts collection.
-   * The first account ID is used to then query the webproperties collection.
-   * The first webproperty ID is used to query the profiles collection. The
-   * first profile is used to query the goals collection. Finally the segments
-   * collection is queries. At each level, an HTML representation is rendered
-   * of the entire collection. If one of the levels has no entities to query
-   * for a child level, then traversal stops.
-   * @return string The HTML representation of the Management API traversal.
-   */
-  private function getTraverseManagementApiHtml() {
-    $accounts = $this->analytics->management_accounts
-                     ->listManagementAccounts();
-
-    $html = $this->getAccountsHtml($accounts);
-
-    if (count($accounts->getItems()) > 0) {
-
-      $firstAccountId = $this->getFirstId($accounts);
-      $webproperties = $this->analytics->management_webproperties
-                            ->listManagementWebproperties($firstAccountId);
-      $html .= $this->getWebpropertiesHtml($webproperties);
-
-      if (count($webproperties->getItems()) > 0) {
-
-        $firstWebpropertyId = $this->getFirstId($webproperties);
-        $profiles = $this->analytics->management_profiles
-                         ->listManagementProfiles($firstAccountId,
-                                                  $firstWebpropertyId);
-        $html .= $this->getProfilesHtml($profiles);
-
-        if (count($profiles->getItems()) > 0) {
-          $firstProfileId = $this->getFirstId($profiles);
-          $goals = $this->analytics->management_goals
-                        ->listManagementGoals($firstAccountId,
-                                              $firstWebpropertyId,
-                                              $firstProfileId);
-          $html .= $this->getGoalsHtml($goals);
-
-        }
-      }
+    /**
+     * Constructor.
+     * @param $analytics
+     * @internal param \Google_AnalyticsService $analytics The analytics service
+     *     object to make requests to the API.
+     */
+    function __construct(&$analytics)
+    {
+        $this->analytics = $analytics;
     }
 
-    $segments = $this->analytics->management_segments
-                     ->listManagementSegments();
+    /**
+     * Returns an HTML string representation of the Management API hierarchy
+     * traversal. Lots of queries occur in the traversal. If any errors occur,
+     * the exceptions are caught and the message is stored in the error.
+     * @return string The HTML representation of the Management API traversal.
+     */
+    function getHtmlOutput()
+    {
+        $output = '';
 
-    $html .= $this->getSegmentsHtml($segments);
-    return $html;
-  }
+        try {
+            $output = $this->getTraverseManagementApiHtml();
+        } catch (Google_ServiceException $e) {
+            $this->error = $e->getMessage();
+        } catch (Google_Exception $e) {
+            $this->error = $e->getMessage();
+        }
+        return $output;
+    }
 
-  /**
-   * Returns the first ID of an item in any of the Management API
-   * collections. This was added to make the traversal code easier
-   * to read.
-   * @param collection $collection Any Management API collection.
-   * @return string The ID of the first item in a collection.
-   */
-  private function getFirstId(&$collection) {
-    $items = $collection->getItems();
-    return $items[0]->getId();
-  }
+    /**
+     * Traverses the Management API. A query is made to the Accounts collection.
+     * The first account ID is used to then query the webproperties collection.
+     * The first webproperty ID is used to query the profiles collection. The
+     * first profile is used to query the goals collection. Finally the segments
+     * collection is queries. At each level, an HTML representation is rendered
+     * of the entire collection. If one of the levels has no entities to query
+     * for a child level, then traversal stops.
+     * @return string The HTML representation of the Management API traversal.
+     */
+    private function getTraverseManagementApiHtml()
+    {
+        $accounts = $this->analytics->management_accounts
+            ->listManagementAccounts();
 
-  /**
-   * Returns important information from the accounts collection.
-   * @param Accounts $accounts The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getAccountsHtml(&$accounts) {
-    $html = '<h3>Accounts Collection</h3>' .
+        $html = $this->getAccountsHtml($accounts);
+
+        if (count($accounts->getItems()) > 0) {
+
+            $firstAccountId = $this->getFirstId($accounts);
+            $webproperties = $this->analytics->management_webproperties
+                ->listManagementWebproperties($firstAccountId);
+            $html .= $this->getWebpropertiesHtml($webproperties);
+
+            if (count($webproperties->getItems()) > 0) {
+
+                $firstWebpropertyId = $this->getFirstId($webproperties);
+                $profiles = $this->analytics->management_profiles
+                    ->listManagementProfiles($firstAccountId,
+                        $firstWebpropertyId);
+                $html .= $this->getProfilesHtml($profiles);
+
+                if (count($profiles->getItems()) > 0) {
+                    $firstProfileId = $this->getFirstId($profiles);
+                    $goals = $this->analytics->management_goals
+                        ->listManagementGoals($firstAccountId,
+                            $firstWebpropertyId,
+                            $firstProfileId);
+                    $html .= $this->getGoalsHtml($goals);
+
+                }
+            }
+        }
+
+        $segments = $this->analytics->management_segments
+            ->listManagementSegments();
+
+        $html .= $this->getSegmentsHtml($segments);
+        return $html;
+    }
+
+    /**
+     * Returns the first ID of an item in any of the Management API
+     * collections. This was added to make the traversal code easier
+     * to read.
+     * @param collection $collection Any Management API collection.
+     * @return string The ID of the first item in a collection.
+     */
+    private function getFirstId(&$collection)
+    {
+        $items = $collection->getItems();
+        return $items[0]->getId();
+    }
+
+    /**
+     * Returns important information from the accounts collection.
+     * @param Accounts $accounts The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getAccountsHtml(&$accounts)
+    {
+        $html = '<h3>Accounts Collection</h3>' .
             $this->getCollectionInfoHtml($accounts);
 
-    $items = $accounts->getItems();
+        $items = $accounts->getItems();
 
-    if (count($items) == 0) {
-      $html .= '<p>No Accounts Found</p>';
+        if (count($items) == 0) {
+            $html .= '<p>No Accounts Found</p>';
 
-    } else {
-      foreach($items as &$account) {
-        $html .= <<<HTML
+        } else {
+            foreach ($items as &$account) {
+                $html .= <<<HTML
 <hr>
 <pre>
 Account ID   = {$account->getId()}
@@ -157,28 +163,29 @@ Created      = {$account->getCreated()}
 Updated      = {$account->getUpdated()}
 </pre>
 HTML;
-      }
+            }
+        }
+        return $html;
     }
-    return $html;
-  }
 
-  /**
-   * Returns important information from the webproperties collection.
-   * @param Google_Webproperties $webproperties The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getWebpropertiesHtml(&$webproperties) {
-    $html = '<h3>Webproperties Collection</h3>' .
+    /**
+     * Returns important information from the webproperties collection.
+     * @param Google_Webproperties $webproperties The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getWebpropertiesHtml(&$webproperties)
+    {
+        $html = '<h3>Webproperties Collection</h3>' .
             $this->getCollectionInfoHtml($webproperties);
 
-    $items = $webproperties->getItems();
+        $items = $webproperties->getItems();
 
-    if (count($items) == 0) {
-      $html .= '<p>No Web Properties Found</p>';
+        if (count($items) == 0) {
+            $html .= '<p>No Web Properties Found</p>';
 
-    } else {
-      foreach ($items as &$webproperty) {
-        $html .= <<<HTML
+        } else {
+            foreach ($items as &$webproperty) {
+                $html .= <<<HTML
 <hr>
 <pre>
 Kind                    = {$webproperty->getKind()}
@@ -197,28 +204,29 @@ Child link href         = {$webproperty->getChildLink()->getHref()}
 Child link type         = {$webproperty->getChildLink()->getType()}
 </pre>
 HTML;
-      }
+            }
+        }
+        return $html;
     }
-    return $html;
-  }
 
-  /**
-   * Returns important information from the profiles collection.
-   * @param Profiles $profiles The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getProfilesHtml(&$profiles) {
-    $html = '<h3>Profiles Collections</h3>' . 
+    /**
+     * Returns important information from the profiles collection.
+     * @param Profiles $profiles The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getProfilesHtml(&$profiles)
+    {
+        $html = '<h3>Profiles Collections</h3>' .
             $this->getCollectionInfoHtml($profiles);
 
-    $items = $profiles->getItems();
+        $items = $profiles->getItems();
 
-    if (count($items) == 0) {
-      $html .= '<p>No Profiles Found</p>';
+        if (count($items) == 0) {
+            $html .= '<p>No Profiles Found</p>';
 
-    } else {
-      foreach ($items as &$profile) {
-        $html .= <<<HTML
+        } else {
+            foreach ($items as &$profile) {
+                $html .= <<<HTML
 <hr>
 <pre>
 Kind                     = {$profile->getKind()}
@@ -248,28 +256,29 @@ Child link href  = {$profile->getChildLink()->getHref()}
 Child link type  = {$profile->getChildLink()->getType()}
 </pre>
 HTML;
-      }
+            }
+        }
+        return $html;
     }
-    return $html;
-  }
 
-  /**
-   * Returns important information from the goals collection.
-   * @param Goals $goals The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getGoalsHtml(&$goals) {
-    $html = '<h3>Goals Collections</h3>' .
+    /**
+     * Returns important information from the goals collection.
+     * @param Goals $goals The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getGoalsHtml(&$goals)
+    {
+        $html = '<h3>Goals Collections</h3>' .
             $this->getCollectionInfoHtml($goals);
 
-    $items = $goals->getItems();
+        $items = $goals->getItems();
 
-    if (count($items) == 0) {
-      $html .= '<p>No Goals Found</p>';
+        if (count($items) == 0) {
+            $html .= '<p>No Goals Found</p>';
 
-    } else {
-      foreach ($items as &$goal) {
-        $html .= <<<HTML
+        } else {
+            foreach ($items as &$goal) {
+                $html .= <<<HTML
 <hr>
 <pre>
 Goal ID   = {$goal->getId()}
@@ -295,38 +304,39 @@ Parent link type = {$goal->getParentLink()->getHref()}
 </pre>
 HTML;
 
-        // Now get the HTML for the type of goal.
-        switch($goal->getType()) {
-          case 'URL_DESTINATION':
-            $html .= $this->getUrlDestinationDetailsHtml(
-                $goal->getUrlDestinationDetails());
-            break;
-          case 'VISIT_TIME_ON_SITE':
-            $html .= $this->getVisitTimeOnSiteDetailsHtml(
-                $goal->getVisitTimeOnSiteDetails());
-            break;
-          case 'VISIT_NUM_PAGES':
-            $html .= $this->getVisitNumPagesDetailsHtml(
-                $goal->getVisitNumPagesDetails());
-            break;
-          case 'EVENT':
-            $html .= $this->getEventDetailsHtml(
-                $goal->getEventDetails());
-            break;
+                // Now get the HTML for the type of goal.
+                switch ($goal->getType()) {
+                    case 'URL_DESTINATION':
+                        $html .= $this->getUrlDestinationDetailsHtml(
+                            $goal->getUrlDestinationDetails());
+                        break;
+                    case 'VISIT_TIME_ON_SITE':
+                        $html .= $this->getVisitTimeOnSiteDetailsHtml(
+                            $goal->getVisitTimeOnSiteDetails());
+                        break;
+                    case 'VISIT_NUM_PAGES':
+                        $html .= $this->getVisitNumPagesDetailsHtml(
+                            $goal->getVisitNumPagesDetails());
+                        break;
+                    case 'EVENT':
+                        $html .= $this->getEventDetailsHtml(
+                            $goal->getEventDetails());
+                        break;
+                }
+            }
         }
-      }
+        return $html;
     }
-    return $html;
-  }
 
-  /**
-   * Returns important information for url destination type goals.
-   * @param GoalUrlDestinationDetails $details The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getUrlDestinationDetailsHtml(&$details) {
-    $html = '<h4>Url Destination Goal</h4>';
-    $html .= <<<HTML
+    /**
+     * Returns important information for url destination type goals.
+     * @param GoalUrlDestinationDetails $details The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getUrlDestinationDetailsHtml(&$details)
+    {
+        $html = '<h4>Url Destination Goal</h4>';
+        $html .= <<<HTML
 <pre>
 Goal URL            = {$details->getUrl()}
 Case Sensitive      = {$details->getCaseSensitive()}
@@ -335,107 +345,111 @@ First Step Required = {$details->getFirstStepRequired()}
 </pre>
 HTML;
 
-  $html .= '<h4>Destination Goal Steps</h4>';
-  $steps = $details->getSteps();
-  if (count($steps) == 0) {
-    $html .= '<p>No Steps Configured</p>';
+        $html .= '<h4>Destination Goal Steps</h4>';
+        $steps = $details->getSteps();
+        if (count($steps) == 0) {
+            $html .= '<p>No Steps Configured</p>';
 
-  } else {
-    foreach ($steps as &$step) {
-      $html .= <<<HTML
+        } else {
+            foreach ($steps as &$step) {
+                $html .= <<<HTML
 <pre>
 Step Number = {$step->getNumber()}
 Step Name   = {$step->getName()}
 Step URL    = {$step->getUrl()}
 </pre>
 HTML;
+            }
+        }
+
+        return $html;
     }
-  }
 
-  return $html;
-  }
-
-  /**
-   * Returns important information for visit time on site type goals.
-   * @param GoalVisitTimeOnSiteDetails $details The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getVisitTimeOnSiteDetailsHtml(&$details) {
-    $html = '<h4>Visit Time On Site Goal</h4>';
-    $html .= <<<HTML
+    /**
+     * Returns important information for visit time on site type goals.
+     * @param GoalVisitTimeOnSiteDetails $details The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getVisitTimeOnSiteDetailsHtml(&$details)
+    {
+        $html = '<h4>Visit Time On Site Goal</h4>';
+        $html .= <<<HTML
 <pre>
 Comparison Type  = {$details->getComparisonType()}
 Comparison Value = {$details->getComparisonValue()}
 </pre>
 HTML;
-    return $html;
-  }
+        return $html;
+    }
 
-  /**
-   * Returns important information for visit number of pages goals.
-   * @param Google_GoalVisitNumPagesDetails $details The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getVisitNumPagesDetailsHtml(&$details) {
-    $html = '<h4>Visit Num Pages Goal</h4>';
-    $html .= <<<HTML
+    /**
+     * Returns important information for visit number of pages goals.
+     * @param Google_GoalVisitNumPagesDetails $details The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getVisitNumPagesDetailsHtml(&$details)
+    {
+        $html = '<h4>Visit Num Pages Goal</h4>';
+        $html .= <<<HTML
 <pre>
 Comparison Type  = {$details->getComparisonType()}
 Comparison Value = {$details->getComparisonValue()}
 </pre>
 HTML;
-    return $html;
-  }
+        return $html;
+    }
 
-  /**
-   * Returns important information for event goals.
-   * @param Google_GoalEventDetails $details The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getEventDetailsHtml(&$details) {
-    $html = '<h4>Event Goal</h4><pre>' .
+    /**
+     * Returns important information for event goals.
+     * @param Google_GoalEventDetails $details The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getEventDetailsHtml(&$details)
+    {
+        $html = '<h4>Event Goal</h4><pre>' .
             'Use Event Value = ' . $details->getUseEventValue();
 
-    // Get all the event goal conditions.
-    $conditions = $details->getEventConditions();
+        // Get all the event goal conditions.
+        $conditions = $details->getEventConditions();
 
-    // String condition types.
-    $stringTypes = array('CATEGORY', 'ACTION', 'LABEL');
+        // String condition types.
+        $stringTypes = array('CATEGORY', 'ACTION', 'LABEL');
 
-    foreach ($conditions as &$condition) {
-      $html .= "Event Type = $condition->getEventType()";
+        foreach ($conditions as &$condition) {
+            $html .= "Event Type = $condition->getEventType()";
 
-      $eventType = $condition->getType();
-      if (in_array($eventType, $stringTypes)) {
-        // Process CATEGORY, ACTION, LABEL.
-        $html .= "Match Type = $condition->getMatchType()" .
-                 "Expression = $condition->getExpression()";
-      } else {
-        // Process VALUE.
-        $html .= "Comparison Type  = $condition->getComparisonType()" .
-                 "Comparison Value = $condition->getComparisonValue()";
-      }
+            $eventType = $condition->getType();
+            if (in_array($eventType, $stringTypes)) {
+                // Process CATEGORY, ACTION, LABEL.
+                $html .= "Match Type = $condition->getMatchType()" .
+                    "Expression = $condition->getExpression()";
+            } else {
+                // Process VALUE.
+                $html .= "Comparison Type  = $condition->getComparisonType()" .
+                    "Comparison Value = $condition->getComparisonValue()";
+            }
+        }
+
+        return $html . '</pre>';
     }
 
-    return $html . '</pre>';
-  }
-
-  /**
-   * Returns important information from the segments collection.
-   * @param Google_Segments $segments The result from the API.
-   * @return string An HTML representation.
-   */
-  private function getSegmentsHtml(&$segments) {
-    $html = '<h3>Segments Collection</h3>' .
+    /**
+     * Returns important information from the segments collection.
+     * @param Google_Segments $segments The result from the API.
+     * @return string An HTML representation.
+     */
+    private function getSegmentsHtml(&$segments)
+    {
+        $html = '<h3>Segments Collection</h3>' .
             $this->getCollectionInfoHtml($segments);
 
-    $items = $segments->getItems();
+        $items = $segments->getItems();
 
-    if (count($items) == 0) {
-      $html .= '<p>No Segments Found</p>';
-    } else {
-      foreach ($items as &$segment) {
-        $html .= <<<HTML
+        if (count($items) == 0) {
+            $html .= '<p>No Segments Found</p>';
+        } else {
+            foreach ($items as &$segment) {
+                $html .= <<<HTML
 <hr>
 <pre>
 Segment ID = {$segment->getId()}
@@ -447,25 +461,26 @@ Created    = {$segment->getCreated()}
 Updated    = {$segment->getUpdated()}
 </pre>
 HTML;
-      }
+            }
+        }
+        return $html;
     }
-    return $html;
-  }
 
-  /**
-   * Returns important information common to each collection in the API.
-   * Most of this data can be used to paginate through the results.
-   * @param collection $collection The result from a Management API request.
-   * @return string An HTML representation.
-   */
-  private function getCollectionInfoHtml(&$collection) {
-    $previousLink = $collection->getPreviousLink()
-                    ? $collection->getPreviousLink() : 'none';
+    /**
+     * Returns important information common to each collection in the API.
+     * Most of this data can be used to paginate through the results.
+     * @param collection $collection The result from a Management API request.
+     * @return string An HTML representation.
+     */
+    private function getCollectionInfoHtml(&$collection)
+    {
+        $previousLink = $collection->getPreviousLink()
+            ? $collection->getPreviousLink() : 'none';
 
-    $nextLink = $collection->getNextLink()
-                ? $collection->getNextLink() : 'none';
+        $nextLink = $collection->getNextLink()
+            ? $collection->getNextLink() : 'none';
 
-    return <<<HTML
+        return <<<HTML
 <pre>
 Username       = {$collection->getUsername()}
 Items Per Page = {$collection->getItemsPerPage()}
@@ -475,10 +490,11 @@ Previous Link  = {$previousLink}
 Next Link      = {$nextLink}
 </pre>
 HTML;
-  }
+    }
 
-  /** @return string Any errors that occurred. */
-  function getError() {
-    return $this->error;
-  }
+    /** @return string Any errors that occurred. */
+    function getError()
+    {
+        return $this->error;
+    }
 }

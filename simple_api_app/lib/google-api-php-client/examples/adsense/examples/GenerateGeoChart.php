@@ -23,31 +23,33 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Silvano Luciani <silvano.luciani@gmail.com>
  */
-class GenerateGeoChart extends BaseExample {
-  public function render() {
-    $startDate = $this->getSixMonthsBeforeNow();
-    $endDate = $this->getNow();
-    $optParams = array(
-        'metric' => array('PAGE_VIEWS'),
-        'dimension' => array('COUNTRY_NAME'),
-        'sort' => 'COUNTRY_NAME'
-    );
-    // Retrieve report.
-    $report = $this->adSenseService->reports
-        ->generate($startDate, $endDate, $optParams);
-    $data = $report['rows'];
-    // We need to convert the metrics to numeric values for the chart.
-    foreach ($data as &$row) {
-      $row[1] = (int)$row[1];
+class GenerateGeoChart extends BaseExample
+{
+    public function render()
+    {
+        $startDate = $this->getSixMonthsBeforeNow();
+        $endDate = $this->getNow();
+        $optParams = array(
+            'metric' => array('PAGE_VIEWS'),
+            'dimension' => array('COUNTRY_NAME'),
+            'sort' => 'COUNTRY_NAME'
+        );
+        // Retrieve report.
+        $report = $this->adSenseService->reports
+            ->generate($startDate, $endDate, $optParams);
+        $data = $report['rows'];
+        // We need to convert the metrics to numeric values for the chart.
+        foreach ($data as &$row) {
+            $row[1] = (int)$row[1];
+        }
+        $data = json_encode($data);
+        $columns = array(
+            array('string', 'Country name'),
+            array('number', 'Page views'),
+        );
+        $type = 'GeoChart';
+        $options = json_encode(array());
+        print generateChartHtml($data, $columns, $type, $options);
     }
-    $data = json_encode($data);
-    $columns = array(
-      array('string', 'Country name'),
-      array('number', 'Page views'),
-    );
-    $type = 'GeoChart';
-    $options = json_encode(array());
-    print generateChartHtml($data, $columns, $type, $options);
-  }
 }
 

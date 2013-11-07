@@ -30,17 +30,19 @@ define('CUSTOM_CHANNEL_ID', 'INSERT_CUSTOM_CHANNEL_ID_HERE');
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class DeleteCustomChannelOnHost extends BaseExample {
-  public function render() {
-    $adClientId = HOST_AD_CLIENT_ID;
-    $customChannelId = CUSTOM_CHANNEL_ID;
+class DeleteCustomChannelOnHost extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = HOST_AD_CLIENT_ID;
+        $customChannelId = CUSTOM_CHANNEL_ID;
 
-    // Retrieve custom channels list, and display it.
-    $result = $this->adSenseHostService->customchannels
-        ->delete($adClientId, $customChannelId);
-    $mainFormat = 'Custom channel with ID "%s" was deleted.';
-    $content = sprintf($mainFormat, $result['id']);
-    print $content;
-  }
+        // Retrieve custom channels list, and display it.
+        $result = $this->adSenseHostService->customchannels
+            ->delete($adClientId, $customChannelId);
+        $mainFormat = 'Custom channel with ID "%s" was deleted.';
+        $content = sprintf($mainFormat, $result['id']);
+        print $content;
+    }
 }
 

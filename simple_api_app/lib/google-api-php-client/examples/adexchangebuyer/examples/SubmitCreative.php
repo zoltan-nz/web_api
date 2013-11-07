@@ -26,59 +26,63 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author david.t@google.com (David Torres)
  */
-class SubmitCreative extends BaseExample {
-  protected function getInputParameters() {
-    return array(array('name' => 'account_id',
-                       'display' => 'Account id',
-                       'required' => true),
-                 array('name' => 'ad_group_id',
-                       'display' => 'Ad group id',
-                       'required' => true),
-                 array('name' => 'buyer_creative_id',
-                       'display' => 'Buyer creative id',
-                       'required' => true),
-                 array('name' => 'advertiser_name',
-                       'display' => 'Advertiser name',
-                       'required' => true),
-                 array('name' => 'html_snippet',
-                       'display' => 'HTML Snippet',
-                       'required' => true),
-                 array('name' => 'click_through_urls',
-                       'display' => 'Click through URLs',
-                       'required' => true),
-                 array('name' => 'width',
-                       'display' => 'Width',
-                       'required' => true),
-                 array('name' => 'height',
-                       'display' => 'Height',
-                       'required' => true));
-  }
+class SubmitCreative extends BaseExample
+{
+    protected function getInputParameters()
+    {
+        return array(array('name' => 'account_id',
+            'display' => 'Account id',
+            'required' => true),
+            array('name' => 'ad_group_id',
+                'display' => 'Ad group id',
+                'required' => true),
+            array('name' => 'buyer_creative_id',
+                'display' => 'Buyer creative id',
+                'required' => true),
+            array('name' => 'advertiser_name',
+                'display' => 'Advertiser name',
+                'required' => true),
+            array('name' => 'html_snippet',
+                'display' => 'HTML Snippet',
+                'required' => true),
+            array('name' => 'click_through_urls',
+                'display' => 'Click through URLs',
+                'required' => true),
+            array('name' => 'width',
+                'display' => 'Width',
+                'required' => true),
+            array('name' => 'height',
+                'display' => 'Height',
+                'required' => true));
+    }
 
-  public function run() {
-    $values = $this->formValues;
+    public function run()
+    {
+        $values = $this->formValues;
 
-    $creative = new Google_Creative();
-    $creative->setAccountId($values['account_id']);
-    $creative->setAdgroupId($values['ad_group_id']);
-    $creative->setBuyerCreativeId($values['buyer_creative_id']);
-    $creative->setAdvertiserName($values['advertiser_name']);
-    $creative->setHTMLSnippet($values['html_snippet']);
-    $creative->setClickThroughUrl(explode(',', $values['click_through_urls']));
-    $creative->setWidth($values['width']);
-    $creative->setHeight($values['height']);
+        $creative = new Google_Creative();
+        $creative->setAccountId($values['account_id']);
+        $creative->setAdgroupId($values['ad_group_id']);
+        $creative->setBuyerCreativeId($values['buyer_creative_id']);
+        $creative->setAdvertiserName($values['advertiser_name']);
+        $creative->setHTMLSnippet($values['html_snippet']);
+        $creative->setClickThroughUrl(explode(',', $values['click_through_urls']));
+        $creative->setWidth($values['width']);
+        $creative->setHeight($values['height']);
 
-    $creative = $this->service->creatives->insert($creative);
-    print '<h2>Submitted creative</h2>';
-    $this->printResult($creative);
-  }
+        $creative = $this->service->creatives->insert($creative);
+        print '<h2>Submitted creative</h2>';
+        $this->printResult($creative);
+    }
 
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getName()
-   * @return string
-   */
-  public function getName() {
-    return 'Submit Creative';
-  }
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getName()
+     * @return string
+     */
+    public function getName()
+    {
+        return 'Submit Creative';
+    }
 }
 

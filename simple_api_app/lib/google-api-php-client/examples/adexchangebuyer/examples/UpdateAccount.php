@@ -26,43 +26,47 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author david.t@google.com (David Torres)
  */
-class UpdateAccount extends BaseExample {
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getInputParameters()
-   * @return array
-   */
-  protected function getInputParameters() {
-    return array(array('name' => 'account_id',
-                       'display' => 'Account id to update',
-                       'required' => true),
-                 array('name' => 'cookie_matching_url',
-                       'display' => 'New cookie matching URL',
-                       'required' => true));
-  }
+class UpdateAccount extends BaseExample
+{
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getInputParameters()
+     * @return array
+     */
+    protected function getInputParameters()
+    {
+        return array(array('name' => 'account_id',
+            'display' => 'Account id to update',
+            'required' => true),
+            array('name' => 'cookie_matching_url',
+                'display' => 'New cookie matching URL',
+                'required' => true));
+    }
 
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::run()
-   */
-  public function run() {
-    $values = $this->formValues;
-    $account = new Google_Account();
-    $account->setId($values['account_id']);
-    $account->setCookieMatchingUrl($values['cookie_matching_url']);
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::run()
+     */
+    public function run()
+    {
+        $values = $this->formValues;
+        $account = new Google_Account();
+        $account->setId($values['account_id']);
+        $account->setCookieMatchingUrl($values['cookie_matching_url']);
 
-    $account = $this->service->accounts->patch($values['account_id'],
-        $account);
-    print '<h2>Submitted account</h2>';
-    $this->printResult($account);
-  }
+        $account = $this->service->accounts->patch($values['account_id'],
+            $account);
+        print '<h2>Submitted account</h2>';
+        $this->printResult($account);
+    }
 
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getName()
-   * @return string
-   */
-  public function getName() {
-    return 'Update Account';
-  }
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getName()
+     * @return string
+     */
+    public function getName()
+    {
+        return 'Update Account';
+    }
 }

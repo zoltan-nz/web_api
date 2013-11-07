@@ -18,10 +18,12 @@
  * under the License.
  */
 
-class ApiModelTest extends BaseTest {
-  public function testDummy() {
-    // temp place holder as tests are being filled in
-    $this->assertTrue(true);
-  }
+class ApiModelTest extends BaseTest
+{
+    public function testDummy()
+    {
+        // temp place holder as tests are being filled in
+        $this->assertTrue(true);
+    }
 
 }

@@ -25,27 +25,30 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author david.t@google.com (David Torres)
  */
-class GetAllAccounts extends BaseExample {
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::run()
-   */
-  public function run() {
-    $result = $this->service->accounts->listAccounts();
+class GetAllAccounts extends BaseExample
+{
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::run()
+     */
+    public function run()
+    {
+        $result = $this->service->accounts->listAccounts();
 
-    print '<h2>Listing of user associated accounts</h2>';
-    foreach ($result['items'] as $account) {
-      $this->printResult($account);
+        print '<h2>Listing of user associated accounts</h2>';
+        foreach ($result['items'] as $account) {
+            $this->printResult($account);
+        }
     }
-  }
 
-  /**
-   * (non-PHPdoc)
-   * @see BaseExample::getName()
-   * @return string
-   */
-  public function getName() {
-    return 'Get All Accounts';
-  }
+    /**
+     * (non-PHPdoc)
+     * @see BaseExample::getName()
+     * @return string
+     */
+    public function getName()
+    {
+        return 'Get All Accounts';
+    }
 }
 

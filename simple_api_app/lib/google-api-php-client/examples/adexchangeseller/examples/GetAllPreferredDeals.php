@@ -25,30 +25,32 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAllPreferredDeals extends BaseExample {
-  public function render() {
-    $listClass = 'list';
-    printListHeader($listClass);
-    // Retrieve preferred deal list, and display it.
-    $result = $this->adExchangeSellerService->preferreddeals
-        ->listPreferreddeals();
-    if (isset($result['items'])) {
-      $deals = $result['items'];
-      foreach ($deals as $deal) {
-        $content = sprintf('Deal id "%s" ', $deal['id']);
-        if (isset($deal['advertiserName'])) {
-          $content .= sprintf('for advertiser "%s" ', $deal['advertiserName']);
+class GetAllPreferredDeals extends BaseExample
+{
+    public function render()
+    {
+        $listClass = 'list';
+        printListHeader($listClass);
+        // Retrieve preferred deal list, and display it.
+        $result = $this->adExchangeSellerService->preferreddeals
+            ->listPreferreddeals();
+        if (isset($result['items'])) {
+            $deals = $result['items'];
+            foreach ($deals as $deal) {
+                $content = sprintf('Deal id "%s" ', $deal['id']);
+                if (isset($deal['advertiserName'])) {
+                    $content .= sprintf('for advertiser "%s" ', $deal['advertiserName']);
+                }
+                if (isset($deal['buyerNetworkName'])) {
+                    $content .= sprintf('on network "%s" ', $deal['buyerNetworkName']);
+                }
+                $content .= 'was found.';
+                printListElement($content);
+            }
+        } else {
+            printNoResultForList();
         }
-        if (isset($deal['buyerNetworkName'])) {
-          $content .= sprintf('on network "%s" ', $deal['buyerNetworkName']);
-        }
-        $content .= 'was found.';
-        printListElement($content);
-      }
-    } else {
-      printNoResultForList();
+        printListFooter();
     }
-    printListFooter();
-  }
 }
 

@@ -22,24 +22,28 @@ require_once 'BaseTest.php';
 require_once '../src/contrib/Google_PlusService.php';
 require_once '../src/service/Google_BatchRequest.php';
 
-class ApiBatchRequestTest extends BaseTest {
-  public $plus;
-  public function __construct() {
-    parent::__construct();
-    $this->plus = new Google_PlusService(BaseTest::$client);
-  }
+class ApiBatchRequestTest extends BaseTest
+{
+    public $plus;
 
-  public function testBatchRequest() {
-    $batch = new Google_BatchRequest();
+    public function __construct()
+    {
+        parent::__construct();
+        $this->plus = new Google_PlusService(BaseTest::$client);
+    }
 
-    BaseTest::$client->setUseBatch(true);
-    $batch->add($this->plus->people->get('me'), 'key1');
-    $batch->add($this->plus->people->get('me'), 'key2');
-    $batch->add($this->plus->people->get('me'), 'key3');
+    public function testBatchRequest()
+    {
+        $batch = new Google_BatchRequest();
 
-    $result = $batch->execute();
-    $this->assertTrue(isset($result['response-key1']));
-    $this->assertTrue(isset($result['response-key2']));
-    $this->assertTrue(isset($result['response-key3']));
-  }
+        BaseTest::$client->setUseBatch(true);
+        $batch->add($this->plus->people->get('me'), 'key1');
+        $batch->add($this->plus->people->get('me'), 'key2');
+        $batch->add($this->plus->people->get('me'), 'key3');
+
+        $result = $batch->execute();
+        $this->assertTrue(isset($result['response-key1']));
+        $this->assertTrue(isset($result['response-key2']));
+        $this->assertTrue(isset($result['response-key3']));
+    }
 }

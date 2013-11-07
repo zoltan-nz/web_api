@@ -30,30 +30,32 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GenerateReportForPublisher extends BaseExample {
-  public function render() {
-    $startDate = $this->getSixMonthsBeforeNow();
-    $endDate = $this->getNow();
-    $optParams = array(
-      'metric' => array(
-        'PAGE_VIEWS', 'AD_REQUESTS', 'AD_REQUESTS_COVERAGE',
-        'CLICKS', 'AD_REQUESTS_CTR', 'COST_PER_CLICK', 'AD_REQUESTS_RPM',
-        'EARNINGS'),
-      'dimension' => 'DATE',
-      'sort' => '+DATE',
-      'filter' => array(
-        'AD_CLIENT_ID==' . PUBLISHER_AD_CLIENT_ID));
-    // Retrieve report.
-    $report = $this->adSenseHostService->accounts_reports
-        ->generate(PUBLISHER_ACCOUNT_ID, $startDate, $endDate, $optParams);
+class GenerateReportForPublisher extends BaseExample
+{
+    public function render()
+    {
+        $startDate = $this->getSixMonthsBeforeNow();
+        $endDate = $this->getNow();
+        $optParams = array(
+            'metric' => array(
+                'PAGE_VIEWS', 'AD_REQUESTS', 'AD_REQUESTS_COVERAGE',
+                'CLICKS', 'AD_REQUESTS_CTR', 'COST_PER_CLICK', 'AD_REQUESTS_RPM',
+                'EARNINGS'),
+            'dimension' => 'DATE',
+            'sort' => '+DATE',
+            'filter' => array(
+                'AD_CLIENT_ID==' . PUBLISHER_AD_CLIENT_ID));
+        // Retrieve report.
+        $report = $this->adSenseHostService->accounts_reports
+            ->generate(PUBLISHER_ACCOUNT_ID, $startDate, $endDate, $optParams);
 
-    if (isset($report['rows'])) {
-      printReportTableHeader($report['headers']);
-      printReportTableRows($report['rows']);
-      printReportTableFooter();
-    } else {
-      printNoResultForTable(count($report['headers']));
+        if (isset($report['rows'])) {
+            printReportTableHeader($report['headers']);
+            printReportTableRows($report['rows']);
+            printReportTableFooter();
+        } else {
+            printNoResultForTable(count($report['headers']));
+        }
     }
-  }
 }
 

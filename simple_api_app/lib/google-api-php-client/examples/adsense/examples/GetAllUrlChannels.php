@@ -26,32 +26,34 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Silvano Luciani <silvano.luciani@gmail.com>
  */
-class GetAllUrlChannels extends BaseExample {
-  public function render() {
-    $adClientId = AD_CLIENT_ID;
-    $optParams['maxResults'] = AD_MAX_PAGE_SIZE;
-    $listClass = 'list';
-    printListHeader($listClass);
-    $pageToken = null;
-    do {
-      $optParams['pageToken'] = $pageToken;
-      // Retrieve URL channels list and display it.
-      $result = $this->adSenseService->urlchannels
-          ->listUrlchannels($adClientId, $optParams);
-      $urlChannels = $result['items'];
-      if (empty($urlChannels)) {
-        foreach ($urlChannels as $urlChannel) {
-          $format = 'URL channel with URL pattern "%s" was found.';
-          $content = sprintf($format, $urlChannel['urlPattern']);
-          printListElement($content);
-        }
-        $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
-            : null;
-      } else {
-        printNoResultForList();
-      }
-    } while ($pageToken);
-    printListFooter();
-  }
+class GetAllUrlChannels extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = AD_CLIENT_ID;
+        $optParams['maxResults'] = AD_MAX_PAGE_SIZE;
+        $listClass = 'list';
+        printListHeader($listClass);
+        $pageToken = null;
+        do {
+            $optParams['pageToken'] = $pageToken;
+            // Retrieve URL channels list and display it.
+            $result = $this->adSenseService->urlchannels
+                ->listUrlchannels($adClientId, $optParams);
+            $urlChannels = $result['items'];
+            if (empty($urlChannels)) {
+                foreach ($urlChannels as $urlChannel) {
+                    $format = 'URL channel with URL pattern "%s" was found.';
+                    $content = sprintf($format, $urlChannel['urlPattern']);
+                    printListElement($content);
+                }
+                $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
+                    : null;
+            } else {
+                printNoResultForList();
+            }
+        } while ($pageToken);
+        printListFooter();
+    }
 }
 

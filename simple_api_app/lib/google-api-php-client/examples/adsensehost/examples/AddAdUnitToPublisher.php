@@ -27,47 +27,49 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class AddAdUnitToPublisher extends BaseExample {
-  public function render() {
-    $accountId = PUBLISHER_ACCOUNT_ID;
-    $adClientId = PUBLISHER_AD_CLIENT_ID;
+class AddAdUnitToPublisher extends BaseExample
+{
+    public function render()
+    {
+        $accountId = PUBLISHER_ACCOUNT_ID;
+        $adClientId = PUBLISHER_AD_CLIENT_ID;
 
-    $adUnit = new Google_AdUnit();
-    $adUnit->setName(sprintf('Ad Unit #%s', $this->getUniqueName()));
+        $adUnit = new Google_AdUnit();
+        $adUnit->setName(sprintf('Ad Unit #%s', $this->getUniqueName()));
 
-    $contentAdsSettings = new Google_AdUnitContentAdsSettings();
-    $backupOption = new Google_AdUnitContentAdsSettingsBackupOption();
-    $backupOption->setType('COLOR');
-    $backupOption->setColor('ffffff');
-    $contentAdsSettings->setBackupOption($backupOption);
-    $contentAdsSettings->setSize('SIZE_200_200');
-    $contentAdsSettings->setType('TEXT');
-    $adUnit->setContentAdsSettings($contentAdsSettings);
+        $contentAdsSettings = new Google_AdUnitContentAdsSettings();
+        $backupOption = new Google_AdUnitContentAdsSettingsBackupOption();
+        $backupOption->setType('COLOR');
+        $backupOption->setColor('ffffff');
+        $contentAdsSettings->setBackupOption($backupOption);
+        $contentAdsSettings->setSize('SIZE_200_200');
+        $contentAdsSettings->setType('TEXT');
+        $adUnit->setContentAdsSettings($contentAdsSettings);
 
-    $customStyle = new Google_AdStyle();
-    $colors = new Google_AdStyleColors();
-    $colors->setBackground('ffffff');
-    $colors->setBorder('000000');
-    $colors->setText('000000');
-    $colors->setTitle('000000');
-    $colors->setUrl('0000ff');
-    $customStyle->setColors($colors);
-    $customStyle->setCorners('SQUARE');
-    $font = new AdStyleFont();
-    $font->setFamily('ACCOUNT_DEFAULT_FAMILY');
-    $font->setSize('ACCOUNT_DEFAULT_SIZE');
-    $customStyle->setFont($font);
-    $adUnit->setCustomStyle($customStyle);
+        $customStyle = new Google_AdStyle();
+        $colors = new Google_AdStyleColors();
+        $colors->setBackground('ffffff');
+        $colors->setBorder('000000');
+        $colors->setText('000000');
+        $colors->setTitle('000000');
+        $colors->setUrl('0000ff');
+        $customStyle->setColors($colors);
+        $customStyle->setCorners('SQUARE');
+        $font = new AdStyleFont();
+        $font->setFamily('ACCOUNT_DEFAULT_FAMILY');
+        $font->setSize('ACCOUNT_DEFAULT_SIZE');
+        $customStyle->setFont($font);
+        $adUnit->setCustomStyle($customStyle);
 
-    // Retrieve custom channels list, and display it.
-    $result = $this->adSenseHostService->accounts_adunits
-        ->insert($accountId, $adClientId, $adUnit);
-    $mainFormat =
-        'Ad unit w/ ID "%s", type "%s", name "%s" and status "%s" was created.';
-    $content = sprintf($mainFormat, $result['id'],
-    $result['contentAdsSettings']['type'], $result['name'],
-        $result['status']);
-    print $content;
-  }
+        // Retrieve custom channels list, and display it.
+        $result = $this->adSenseHostService->accounts_adunits
+            ->insert($accountId, $adClientId, $adUnit);
+        $mainFormat =
+            'Ad unit w/ ID "%s", type "%s", name "%s" and status "%s" was created.';
+        $content = sprintf($mainFormat, $result['id'],
+            $result['contentAdsSettings']['type'], $result['name'],
+            $result['status']);
+        print $content;
+    }
 }
 

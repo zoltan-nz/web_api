@@ -32,48 +32,50 @@ require_once __DIR__ . "/../BaseExample.php";
  * @author Silvano Luciani <silvano.luciani@gmail.com>
  */
 
-class GenerateReportWithPaging extends BaseExample {
-  public function render() {
-    $startDate = $this->getSixMonthsBeforeNow();
-    $endDate = $this->getNow();
-    $optParams = array(
-      'metric' => array(
-        'PAGE_VIEWS', 'AD_REQUESTS', 'AD_REQUESTS_COVERAGE',
-        'CLICKS', 'AD_REQUESTS_CTR', 'COST_PER_CLICK', 'AD_REQUESTS_RPM',
-        'EARNINGS'),
-      'dimension' => 'DATE',
-      'sort' => 'DATE',
-      'filter' => array(
-        'AD_CLIENT_ID==' . AD_CLIENT_ID
-      )
-    );
-    // Retrieve report in pages and display data as we receive it.
-    $startIndex = 0;
-    $rowsToObtain = AD_MAX_PAGE_SIZE;
-    do {
-      $optParams['startIndex'] = $startIndex;
-      $optParams['maxResults'] = $rowsToObtain;
-      $report = $this->adSenseService->reports
-          ->generate($startDate, $endDate, $optParams);
+class GenerateReportWithPaging extends BaseExample
+{
+    public function render()
+    {
+        $startDate = $this->getSixMonthsBeforeNow();
+        $endDate = $this->getNow();
+        $optParams = array(
+            'metric' => array(
+                'PAGE_VIEWS', 'AD_REQUESTS', 'AD_REQUESTS_COVERAGE',
+                'CLICKS', 'AD_REQUESTS_CTR', 'COST_PER_CLICK', 'AD_REQUESTS_RPM',
+                'EARNINGS'),
+            'dimension' => 'DATE',
+            'sort' => 'DATE',
+            'filter' => array(
+                'AD_CLIENT_ID==' . AD_CLIENT_ID
+            )
+        );
+        // Retrieve report in pages and display data as we receive it.
+        $startIndex = 0;
+        $rowsToObtain = AD_MAX_PAGE_SIZE;
+        do {
+            $optParams['startIndex'] = $startIndex;
+            $optParams['maxResults'] = $rowsToObtain;
+            $report = $this->adSenseService->reports
+                ->generate($startDate, $endDate, $optParams);
 
-      if ($report['totalMatchedRows'] > AD_ROW_LIMIT) {
-        printPaginationError();
-        break;
-      } else {
-        if ($startIndex == 0) {
-          printReportTableHeader($report['headers']);
-          if ($report['totalMatchedRows'] == 0) {
-            printNoResultForTable(count($report['headers']));
-            break;
-          }
-        }
-        if (isset($report['rows'])) {
-          printReportTableRows($report['rows']);
-          $startIndex += count($report['rows']);
-        }
-      }
-    } while ($startIndex < $report['totalMatchedRows']);
-    printReportTableFooter();
-  }
+            if ($report['totalMatchedRows'] > AD_ROW_LIMIT) {
+                printPaginationError();
+                break;
+            } else {
+                if ($startIndex == 0) {
+                    printReportTableHeader($report['headers']);
+                    if ($report['totalMatchedRows'] == 0) {
+                        printNoResultForTable(count($report['headers']));
+                        break;
+                    }
+                }
+                if (isset($report['rows'])) {
+                    printReportTableRows($report['rows']);
+                    $startIndex += count($report['rows']);
+                }
+            }
+        } while ($startIndex < $report['totalMatchedRows']);
+        printReportTableFooter();
+    }
 }
 

@@ -31,18 +31,20 @@ define('PUBLISHER_AD_UNIT_ID', 'INSERT_AD_UNIT_ID_HERE');
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class DeleteAdUnitOnPublisher extends BaseExample {
-  public function render() {
-    $accountId = PUBLISHER_ACCOUNT_ID;
-    $adClientId = PUBLISHER_AD_CLIENT_ID;
-    $adUnitId = PUBLISHER_AD_UNIT_ID;
+class DeleteAdUnitOnPublisher extends BaseExample
+{
+    public function render()
+    {
+        $accountId = PUBLISHER_ACCOUNT_ID;
+        $adClientId = PUBLISHER_AD_CLIENT_ID;
+        $adUnitId = PUBLISHER_AD_UNIT_ID;
 
-    // Retrieve custom channels list, and display it.
-    $result = $this->adSenseHostService->accounts_adunits
-        ->delete($accountId, $adClientId, $adUnitId);
-    $mainFormat = 'Ad unit with ID "%s" was deleted.';
-    $content = sprintf($mainFormat, $result['id']);
-    print $content;
-  }
+        // Retrieve custom channels list, and display it.
+        $result = $this->adSenseHostService->accounts_adunits
+            ->delete($accountId, $adClientId, $adUnitId);
+        $mainFormat = 'Ad unit with ID "%s" was deleted.';
+        $content = sprintf($mainFormat, $result['id']);
+        print $content;
+    }
 }
 

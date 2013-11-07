@@ -30,17 +30,19 @@ define('URL_CHANNEL_ID', 'INSERT_URL_CHANNEL_ID_HERE');
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class DeleteUrlChannelOnHost extends BaseExample {
-  public function render() {
-    $adClientId = HOST_AD_CLIENT_ID;
-    $urlChannelId = URL_CHANNEL_ID;
+class DeleteUrlChannelOnHost extends BaseExample
+{
+    public function render()
+    {
+        $adClientId = HOST_AD_CLIENT_ID;
+        $urlChannelId = URL_CHANNEL_ID;
 
-    // Retrieve URL channels list, and display it.
-    $result = $this->adSenseHostService->urlchannels
-        ->delete($adClientId, $urlChannelId);
-    $mainFormat = 'URL channel with ID "%s" was deleted.';
-    $content = sprintf($mainFormat, $result['id']);
-    print $content;
-  }
+        // Retrieve URL channels list, and display it.
+        $result = $this->adSenseHostService->urlchannels
+            ->delete($adClientId, $urlChannelId);
+        $mainFormat = 'URL channel with ID "%s" was deleted.';
+        $content = sprintf($mainFormat, $result['id']);
+        print $content;
+    }
 }
 

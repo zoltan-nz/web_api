@@ -16,40 +16,40 @@ $client->setDeveloperKey('insert_developer_key');
 $moments = new Google_PlusMomentsService($client);
 
 if (isset($_GET['signout'])) {
-  unset($_SESSION['token']);
+    unset($_SESSION['token']);
 }
 
 if (isset($_GET['code'])) {
-  // Validate the state parameter (the CSRF token generated with the
-  // Google+ sign-in button).
-  if (strval($_SESSION['state']) !== strval($_GET['state'])) {
-    die("The session state did not match.");
-  }
+    // Validate the state parameter (the CSRF token generated with the
+    // Google+ sign-in button).
+    if (strval($_SESSION['state']) !== strval($_GET['state'])) {
+        die("The session state did not match.");
+    }
 
-  unset($_SESSION['state']);
+    unset($_SESSION['state']);
 
-  // Receive an OAuth 2.0 authorization code via the GET parameter 'code'.
-  // Exchange the OAuth 2.0 authorization code for user credentials.
-  $client->authenticate($_GET['code']);
-  $_SESSION['token'] = $client->getAccessToken();
-  print '<script type="text/javascript">window.close();</script>';
-  exit(0);
+    // Receive an OAuth 2.0 authorization code via the GET parameter 'code'.
+    // Exchange the OAuth 2.0 authorization code for user credentials.
+    $client->authenticate($_GET['code']);
+    $_SESSION['token'] = $client->getAccessToken();
+    print '<script type="text/javascript">window.close();</script>';
+    exit(0);
 }
 
 // Recall the credentials from the session.  In practice, you want to
 // look-up the token from a database.
 if (isset($_SESSION['token'])) {
-  $client->setAccessToken($_SESSION['token']);
+    $client->setAccessToken($_SESSION['token']);
 }
 
 if ($client->isAccessTokenExpired()) {
 
-  // Generate a unique CSRF token.
-  $state = sha1(uniqid(mt_rand(), true));
-  $_SESSION['state'] = $state;
+    // Generate a unique CSRF token.
+    $state = sha1(uniqid(mt_rand(), true));
+    $_SESSION['state'] = $state;
 
-  // Render the Google+ sign-in button.
-  print <<<MARKUP
+    // Render the Google+ sign-in button.
+    print <<<MARKUP
 <!doctype html><html><head>
 <script type="text/javascript" src="http://apis.google.com/js/plusone.js"></script>
 <script type="text/javascript">
@@ -69,17 +69,17 @@ if ($client->isAccessTokenExpired()) {
 MARKUP;
 
 } else {
-  // Build the moment to write
-  $target = new Google_ItemScope();
-  $target->url = 'https://developers.google.com/+/plugins/snippet/examples/thing';
+    // Build the moment to write
+    $target = new Google_ItemScope();
+    $target->url = 'https://developers.google.com/+/plugins/snippet/examples/thing';
 
-  $moment = new Google_Moment();
-  $moment->type = "http://schemas.google.com/AddActivity";
-  $moment->target = $target;
+    $moment = new Google_Moment();
+    $moment->type = "http://schemas.google.com/AddActivity";
+    $moment->target = $target;
 
-  // Execute the request
-  $moments->moments->insert('me', 'vault', $moment);
-  print '<p>Created an AddActivity moment</p>';
+    // Execute the request
+    $moments->moments->insert('me', 'vault', $moment);
+    print '<p>Created an AddActivity moment</p>';
 
-  $_SESSION['token'] = $client->getAccessToken();
+    $_SESSION['token'] = $client->getAccessToken();
 }

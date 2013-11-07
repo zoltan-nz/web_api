@@ -25,34 +25,36 @@ require_once __DIR__ . "/../BaseExample.php";
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class GetAllSavedAdStyles extends BaseExample {
-  public function render() {
-    $accountId = ACCOUNT_ID;
-    $optParams['maxResults'] = AD_MAX_PAGE_SIZE;
-    $listClass = 'saved ad styles';
-    printListHeader($listClass);
-    $pageToken = null;
-    do {
-      $optParams['pageToken'] = $pageToken;
-      // Retrieve saved ad style list, and display it.
-      $result = $this->adSenseService->accounts_savedadstyles
-          ->listAccountsSavedadstyles($accountId, $optParams);
-      $savedAdStyles = $result['items'];
-      if (empty($savedAdStyles)) {
-        foreach ($savedAdStyles as $savedAdStyle) {
-          $content = array();
-          $mainFormat = 'Saved ad style with name "%s" and ID "%s" was found.';
-          $content[] = sprintf(
-              $mainFormat, $savedAdStyle['name'], $savedAdStyle['id']);
-          printListElementForClients($content);
-        }
-        $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
-            : null;
-      } else {
-        printNoResultForList();
-      }
-    } while ($pageToken);
-    printListFooter();
-  }
+class GetAllSavedAdStyles extends BaseExample
+{
+    public function render()
+    {
+        $accountId = ACCOUNT_ID;
+        $optParams['maxResults'] = AD_MAX_PAGE_SIZE;
+        $listClass = 'saved ad styles';
+        printListHeader($listClass);
+        $pageToken = null;
+        do {
+            $optParams['pageToken'] = $pageToken;
+            // Retrieve saved ad style list, and display it.
+            $result = $this->adSenseService->accounts_savedadstyles
+                ->listAccountsSavedadstyles($accountId, $optParams);
+            $savedAdStyles = $result['items'];
+            if (empty($savedAdStyles)) {
+                foreach ($savedAdStyles as $savedAdStyle) {
+                    $content = array();
+                    $mainFormat = 'Saved ad style with name "%s" and ID "%s" was found.';
+                    $content[] = sprintf(
+                        $mainFormat, $savedAdStyle['name'], $savedAdStyle['id']);
+                    printListElementForClients($content);
+                }
+                $pageToken = isset($result['nextPageToken']) ? $result['nextPageToken']
+                    : null;
+            } else {
+                printNoResultForList();
+            }
+        } while ($pageToken);
+        printListFooter();
+    }
 }
 

@@ -28,16 +28,18 @@ define('TOKEN', 'INSERT_TOKEN_HERE');
  *
  * @author Sérgio Gomes <sgomes@google.com>
  */
-class VerifyAssociationSession extends BaseExample {
-  public function render() {
-    // Retrieve report.
-    $result = $this->adSenseHostService->associationsessions->verify(TOKEN);
+class VerifyAssociationSession extends BaseExample
+{
+    public function render()
+    {
+        // Retrieve report.
+        $result = $this->adSenseHostService->associationsessions->verify(TOKEN);
 
-    $format = 'Association for account "%s" has status "%s" and ID "%s".';
-    $content = sprintf($format, $result['accountId'], $result['status'],
-        $result['id']);
+        $format = 'Association for account "%s" has status "%s" and ID "%s".';
+        $content = sprintf($format, $result['accountId'], $result['status'],
+            $result['id']);
 
-    print $content;
-  }
+        print $content;
+    }
 }
 
