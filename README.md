@@ -13,7 +13,7 @@ Working website is here: www.marketingforgambling.com
 
 (Facebook App url: http://localhost:8000 could be for your localhost testing... When you deploy your app, you have to change this url in your connected Facebook App settings.)
 
-4. Run your app:
+### Run your app:
 
     php -S localhost:8000
 
