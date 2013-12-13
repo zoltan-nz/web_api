@@ -1,9 +1,21 @@
 Twitter - Facebook - Google Plus API implementation with PHP
 ===========================
 
-Simple_Api_App is a test implementation of the most important social network apis.
+This app is a test implementation of the most important social network APIs.
 
 Working website is here: www.marketingforgambling.com
+
+### Installation
+
+1. You should have at least php v5.3
+2. Make a copy in your local folder. User git clone or just download in zip package.
+3. Setup secret_tokens.php (You have to create apps in Twitter, Facebook, Google+.) - Never share your secret tokens on GitHub!
+
+(Facebook App url: http://localhost:8000 could be for your localhost testing... When you deploy your app, you have to change this url in your connected Facebook App settings.)
+
+4. Run your app:
+
+    php -S localhost:8000
 
 [![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/szines/web_api/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
 

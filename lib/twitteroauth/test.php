@@ -34,7 +34,7 @@ if (empty($active) || empty($_GET['confirmed']) || $_GET['confirmed'] !== 'TRUE'
     echo '<h3>Profile information/design will be changed.</h3>';
     echo '<h2>USE A DEV ACCOUNT!</h2>';
     echo '<h4>Before use you must set $active = TRUE in test.php</h4>';
-    echo '<a href="./test.php?confirmed=TRUE">Continue</a> or <a href="./index.php">go back</a>.';
+    echo '<a href="test.php?confirmed=TRUE">Continue</a> or <a href="index.php">go back</a>.';
     exit;
 }
 
