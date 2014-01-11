@@ -17,5 +17,3 @@ Working website is here: www.marketingforgambling.com
 
     php -S localhost:8000
 
-[![Bitdeli Badge](https://d2weczhvl823v0.cloudfront.net/szines/web_api/trend.png)](https://bitdeli.com/free "Bitdeli Badge")
-
